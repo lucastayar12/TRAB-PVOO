@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class DAOPassageiro {
     
     Scanner scanner = new Scanner(System.in);
+    GUI gui = new GUI();
     private Passageiro[] passageiros = new Passageiro[10];
     int op = 0;
 
@@ -72,11 +73,8 @@ public class DAOPassageiro {
         for (int i = 0; i < passageiros.length; i++) {
             Passageiro passageiro = passageiros[i];
             if (passageiro != null && passageiro.getId() == id) {
-                System.out.println("1- Altera nome");
-                System.out.println("2- Altera documento");
-                System.out.println("3- Altera Data de nascimento");
-                System.out.print("Digite uma opção:");
-                op = Integer.parseInt(scanner.nextLine());
+                
+                op = gui.menuAlteraPassageiro();
                 
                 switch(op)
                 {

@@ -93,7 +93,7 @@ public class Aeroporto {
 
     @Override
     public String toString() {
-        return "Aeroporto{" + "id=" + id + ", nome=" + nome + ", abreviacao=" + abreviacao + ", cidade=" + cidade + ", dataCriacao=" + dataCriacao + ", dataModificacao=" + dataModificacao + '}';
+        return "\nAeroporto\n" + "ID= " + id + ", Nome= " + nome + ", \nAbreviação= " + abreviacao + " Cidade= " + cidade + "\nData da Criação= " + dataCriacao + "\nData de Modificação= " + dataModificacao + '\n';
     }
 
 }

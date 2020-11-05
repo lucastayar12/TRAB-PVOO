@@ -68,7 +68,7 @@ public class Passageiro {
 
     @Override
     public String toString() {
-        return "Passageiro\n" + "ID= " + id + " Nome= " + nome + "\nNascimento= " + nascimento + " Documento= " + documento + "\nData de Criação= " + dataCriacao + " Data de Modificacao= " + dataModificacao + '\n';
+        return "\nPassageiro\n" + "ID= " + id + " Nome= " + nome + "\nNascimento= " + nascimento + " Documento= " + documento + "\nData de Criação= " + dataCriacao + " Data de Modificacao= " + dataModificacao + '\n';
     }
 
     @Override

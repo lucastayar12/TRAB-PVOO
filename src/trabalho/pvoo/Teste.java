@@ -112,7 +112,7 @@ public class Teste {
 
             }
 
-        } while (op != 9);
+        } while (op != 3);
     }
 
     public static void main(String[] args) {

@@ -21,6 +21,7 @@ public class GUI {
         System.out.println("2- Listar passageiros");
         System.out.println("3- Altera passageiro");
         System.out.println("4- Remover passageiro");
+        System.out.println("5- Sair");
         System.out.print("Digite a opção:");
 
         return Integer.parseInt(scanner.nextLine());
@@ -34,6 +35,7 @@ public class GUI {
         System.out.println("2- Listar aeroporto");
         System.out.println("3- Altera aeroporto");
         System.out.println("4- Remover aeroporto");
+        System.out.println("5- Sair");
         System.out.print("Digite a opção:");
         
         return Integer.parseInt(scanner.nextLine());

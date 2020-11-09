@@ -84,7 +84,7 @@ public class Companhia_A {
 
     @Override
     public String toString() {
-        return "Companhia_A{" + "id=" + id + ", nome=" + nome + ", abreviacao=" + abreviacao + ", dataCriacao=" + dataCriacao + ", dataModificacao=" + dataModificacao + '}';
+        return "\nCompanhia Aéria\n" + "ID= " + id + ", Nome= " + nome + " Abreviacao= " + abreviacao + "\nData de criação= " + dataCriacao + " Data de modificação= " + dataModificacao + '\n';
     }
 
 }

@@ -40,7 +40,20 @@ public class GUI {
         
         return Integer.parseInt(scanner.nextLine());
     }
-
+    
+     public int menuCompanhia_A(){
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("1- Adicionar companhia aérea");
+        System.out.println("2- Listar companhia aérea");
+        System.out.println("3- Altera companhia aérea");
+        System.out.println("4- Remover companhia aérea");
+        System.out.println("5- Sair");
+        System.out.print("Digite a opção:");
+        
+        return Integer.parseInt(scanner.nextLine());
+    }
+    
     public Passageiro criaPassageiro() {
 
         Scanner scanner = new Scanner(System.in);
@@ -59,6 +72,42 @@ public class GUI {
         p.setDocumento(doc);
 
         return p;
+    }
+    
+    public Aeroporto criaAeroporto() {
+
+        Scanner scanner = new Scanner(System.in);
+        Aeroporto ae = new Aeroporto();
+
+        System.out.print("Digite o nome: ");
+        String nome = scanner.nextLine();
+        ae.setNome(nome);
+
+        System.out.print("Digite a cidade: ");
+        String cid = scanner.nextLine();
+        ae.setCidade(cid);
+
+        System.out.print("Digite a abrevição: ");
+        String abrev = scanner.nextLine();
+        ae.setAbreviacao(abrev);
+
+        return ae;
+    }
+    
+    public Companhia_A criaCompanhia_A() {
+
+        Scanner scanner = new Scanner(System.in);
+        Companhia_A ca = new Companhia_A();
+
+        System.out.print("Digite o nome: ");
+        String nome = scanner.nextLine();
+        ca.setNome(nome);
+
+        System.out.print("Digite a abrevição: ");
+        String abrev = scanner.nextLine();
+        ca.setAbreviacao(abrev);
+
+        return ca;
     }
 
     public int menuAlteraPassageiro() {
@@ -85,24 +134,15 @@ public class GUI {
         return op = Integer.parseInt(scanner.nextLine());
     }
     
-    public Aeroporto criaAeroporto() {
+    public int menuAlteraComapanhia_A() {
 
         Scanner scanner = new Scanner(System.in);
-        Aeroporto ae = new Aeroporto();
-
-        System.out.print("Digite o nome: ");
-        String nome = scanner.nextLine();
-        ae.setNome(nome);
-
-        System.out.print("Digite a data de Nascimento: ");
-        String cid = scanner.nextLine();
-        ae.setCidade(cid);
-
-        System.out.print("Digite o Documento: ");
-        String abrev = scanner.nextLine();
-        ae.setAbreviacao(abrev);
-
-        return ae;
+        int op = 0;
+        
+        System.out.println("1- Altera nome");
+        System.out.println("2- Altera abreviação");
+        System.out.print("Digite uma opção:");
+        return op = Integer.parseInt(scanner.nextLine());
     }
     
     public int menuCRUD(){
@@ -111,6 +151,7 @@ public class GUI {
         
         System.out.println("1- CRUD Passageiro");
         System.out.println("2- CRUD Aaeroporto");
+        System.out.println("3- CRUD Companhia Aérea");
         System.out.print("Digite uma opção: ");
         int op = Integer.parseInt(scanner.nextLine());
         

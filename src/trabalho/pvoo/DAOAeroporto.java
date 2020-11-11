@@ -96,14 +96,15 @@ public class DAOAeroporto {
                         String nome = scanner.nextLine();
                         aeroportos[i].setNome(nome);
                         aeroportos[i].setDataModificacao(LocalDate.now());
-
                         break;
+                        
                     case 2:
                         System.out.print("Digite a nova cidade:");
                         String cid = scanner.nextLine();
                         aeroportos[i].setCidade(cid);
                         aeroportos[i].setDataModificacao(LocalDate.now());
                         break;
+                        
                     case 3:
                         System.out.print("Digite a nova abreviação:");
                         String abrev = scanner.nextLine();

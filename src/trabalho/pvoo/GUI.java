@@ -186,7 +186,11 @@ public class GUI {
 
         System.out.println("1- Altera origem");
         System.out.println("2- Altera destino");
-        System.out.println("3- Altera Data de nascimento");
+        System.out.println("3- Altera Data");
+        System.out.println("4- Altera Duração");
+        System.out.println("5- Altera companhia aérea");
+        System.out.println("6- Altera Capacidade");
+        System.out.println("7- Altera Avião");
         System.out.print("Digite uma opção:");
         return op = Integer.parseInt(scanner.nextLine());
     }

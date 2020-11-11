@@ -154,41 +154,60 @@ public class Teste {
 
                     } while (op2 != 5);
                     break;
-                    
+
                 case 4:
-                    do{
+                    do {
                         op2 = gui.menuVoo();
-                        
-                        switch(op2)
-                        {
+
+                        switch (op2) {
                             case 1:
                                 Voo voo = gui.criaVoo();
                                 conf = daovoo.inserir(voo);
-                                
+
                                 if (conf) {
                                     System.out.println("Vôo foi inserido.");
                                 } else {
                                     System.out.println("Vôo não foi criado.");
                                 }
-                                
+
                                 break;
-                                
+
                             case 2:
                                 daovoo.mostra();
+
                                 break;
-                                
+
                             case 3:
-                                
+                                daovoo.mostra();
+                                System.out.print("Digite o ID do vôo que deseja alterar:");
+                                id = Integer.parseInt(scanner.nextLine());
+                                daovoo.altera(id);
+
                                 break;
+
+                            case 4:
+                                daovoo.mostra();
+                                System.out.print("Digite o ID do vôo que deseja excluir:");
+                                id = Integer.parseInt(scanner.nextLine());
+                                daovoo.exclui(id);
+
+                                break;
+
+                            case 5:
+                                System.out.println("\nSaindo...\n");
+
+                                break;
+                            default:
+                                System.out.println("Opção Inválida");
                         }
-                        
-                    }while(op2 != 4);
+
+                    } while (op2 != 5);
                     break;
-                    
+
                 case 5:
                     System.out.println("\nSaindo...\n");
                     break;
-                    
+
                 default:
                     System.out.println("Opção Inválida");
 

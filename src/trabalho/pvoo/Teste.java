@@ -10,9 +10,10 @@ public class Teste {
         DAOPassageiro daopassageiro = new DAOPassageiro();
         DAOAeroporto daoaeroporto = new DAOAeroporto();
         DAOCompanhia_A daocompanhiaa = new DAOCompanhia_A();
+        DAOVoo daovoo = new DAOVoo();
         GUI gui = new GUI();
-        int op = 0;
-        int op2 = 0;
+        int op;
+        int op2;
         int id;
         boolean conf;
 
@@ -153,12 +154,46 @@ public class Teste {
 
                     } while (op2 != 5);
                     break;
-
+                    
+                case 4:
+                    do{
+                        op2 = gui.menuVoo();
+                        
+                        switch(op2)
+                        {
+                            case 1:
+                                Voo voo = gui.criaVoo();
+                                conf = daovoo.inserir(voo);
+                                
+                                if (conf) {
+                                    System.out.println("Vôo foi inserido.");
+                                } else {
+                                    System.out.println("Vôo não foi criado.");
+                                }
+                                
+                                break;
+                                
+                            case 2:
+                                daovoo.mostra();
+                                break;
+                                
+                            case 3:
+                                
+                                break;
+                        }
+                        
+                    }while(op2 != 4);
+                    break;
+                    
+                case 5:
+                    System.out.println("\nSaindo...\n");
+                    break;
+                    
                 default:
                     System.out.println("Opção Inválida");
 
             }
-        } while (op != 4);
+        } while (op != 5);
     }
 
     public static void main(String[] args) {

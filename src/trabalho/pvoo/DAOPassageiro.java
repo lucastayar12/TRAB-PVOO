@@ -28,7 +28,7 @@ public class DAOPassageiro {
         p3.setNascimento("28/06/1983");
         p3.setDocumento("1849840068-32");
         this.inserir(p3);
-        
+     
     }
 
     int proximaPosicaoLivre() {
@@ -92,7 +92,7 @@ public class DAOPassageiro {
                         passageiros[i].setDataModificacao(LocalDate.now());
                         break;
                     case 3:
-                        System.out.print("Dgite a nova data de nascimento:");
+                        System.out.print("Digite a nova data de nascimento:");
                         String dt_nasc = scanner.nextLine();
                         passageiros[i].setNascimento(dt_nasc);
                         passageiros[i].setDataModificacao(LocalDate.now());

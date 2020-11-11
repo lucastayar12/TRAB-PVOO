@@ -1,44 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho.pvoo;
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
-/**
- *
- * @author Lucas
- */
 public class DAOAeroporto {
-    
+
     Scanner scanner = new Scanner(System.in);
     GUI gui = new GUI();
-    
-     private Aeroporto[] aeroportos = new Aeroporto[10];
+
+    private Aeroporto[] aeroportos = new Aeroporto[10];
     int op = 0;
 
     public DAOAeroporto() {
+
         Aeroporto ae = new Aeroporto();
         ae.setNome("Aeroporto de São Paulo");
         ae.setCidade("São Paulo");
         ae.setAbreviacao("SP");
         this.inserir(ae);
-        
-        Aeroporto ae2 = new Aeroporto();
-        ae2.setNome("Aeroporto de Paris");
-        ae2.setCidade("Paris");
-        ae2.setAbreviacao("PAR");
-        this.inserir(ae2);
-        
+
+        Aeroporto ae4 = new Aeroporto();
+        ae4.setNome("Aeroporto de Uberaba");
+        ae4.setCidade("Uberaba");
+        ae4.setAbreviacao("URA");
+        this.inserir(ae4);
+
+        Aeroporto ae5 = new Aeroporto();
+        ae5.setNome("Aeroporto de Nova Iorque");
+        ae5.setCidade("Nova Iorque");
+        ae5.setAbreviacao("NY");
+        this.inserir(ae5);
+
         Aeroporto ae3 = new Aeroporto();
         ae3.setNome("Aeroporto de Londres");
         ae3.setCidade("Londres");
         ae3.setAbreviacao("LON");
         this.inserir(ae3);
-        
+
+        Aeroporto ae2 = new Aeroporto();
+        ae2.setNome("Aeroporto de Paris");
+        ae2.setCidade("Paris");
+        ae2.setAbreviacao("PAR");
+        this.inserir(ae2);
+
     }
 
     int proximaPosicaoLivre() {
@@ -78,22 +82,21 @@ public class DAOAeroporto {
         }
         return false;
     }
-    
+
     public boolean altera(int id) {
         for (int i = 0; i < aeroportos.length; i++) {
             Aeroporto aeroporto = aeroportos[i];
             if (aeroporto != null && aeroporto.getId() == id) {
-                
+
                 op = gui.menuAlteraAeroporto();
-                
-                switch(op)
-                {
+
+                switch (op) {
                     case 1:
                         System.out.print("Digite o novo nome:");
                         String nome = scanner.nextLine();
                         aeroportos[i].setNome(nome);
                         aeroportos[i].setDataModificacao(LocalDate.now());
-                       
+
                         break;
                     case 2:
                         System.out.print("Digite a nova cidade:");
@@ -108,11 +111,24 @@ public class DAOAeroporto {
                         aeroportos[i].setDataModificacao(LocalDate.now());
                         break;
                 }
-                
+
                 return true;
             }
         }
         return false;
     }
     
+    public Aeroporto buscaPorId(int id){
+        
+        Aeroporto aeroportof = new Aeroporto();
+        
+        for (Aeroporto aeroporto : aeroportos) {
+            if (aeroporto != null && aeroporto.getId() == id) {
+                aeroportof = aeroporto;
+            }
+        }
+        
+       return aeroportof;
+    }
+
 }

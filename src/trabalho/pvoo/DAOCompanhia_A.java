@@ -97,5 +97,18 @@ public class DAOCompanhia_A {
         return false;
     }
     
+    public Companhia_A buscaPorId(int id){
+        
+        Companhia_A companhiaaf = new Companhia_A();
+        
+        for (Companhia_A companhiaa : companhiaas) {
+            if (companhiaa != null && companhiaa.getId() == id) {
+                companhiaaf = companhiaa;
+            }
+        }
+        
+       return companhiaaf;
+    }
+    
     
 }

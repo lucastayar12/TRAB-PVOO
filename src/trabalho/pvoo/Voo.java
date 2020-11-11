@@ -6,13 +6,14 @@ import java.util.Objects;
 public class Voo {
 
     private long id;
-    private String origem;
-    private String destino;
+    private Aeroporto origem;
+    private Aeroporto destino;
     private LocalDate data;
     private String duracao;
     private Companhia_A companhia;
+    private long capacidade;
     private String aviao;
-    private String estado;
+    private String estado = "Planejado";
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
     private static long serial;
@@ -26,22 +27,22 @@ public class Voo {
         return id;
     }
 
-    public String getOrigem() {
+    public Aeroporto getOrigem() {
         return origem;
     }
 
-    public void setOrigem(String origem) {
+    public void setOrigem(Aeroporto origem) {
         this.origem = origem;
     }
 
-    public String getDestino() {
+    public Aeroporto getDestino() {
         return destino;
     }
 
-    public void setDestino(String destino) {
+    public void setDestino(Aeroporto destino) {
         this.destino = destino;
     }
-
+    
     public LocalDate getData() {
         return data;
     }
@@ -66,6 +67,14 @@ public class Voo {
         this.companhia = companhia;
     }
 
+    public long getCapacidade() {
+        return capacidade;
+    }
+
+    public void setCapacidade(long capacidade) {
+        this.capacidade = capacidade;
+    }
+    
     public String getAviao() {
         return aviao;
     }
@@ -138,10 +147,12 @@ public class Voo {
         }
         return true;
     }
-    
+
     @Override
     public String toString() {
-        return "Voo{" + "id=" + id + ", origem=" + origem + ", destino=" + destino + ", data=" + data + ", duracao=" + duracao + ", companhia=" + companhia + ", aviao=" + aviao + ", estado=" + estado + ", dataCriacao=" + dataCriacao + ", dataModificacao=" + dataModificacao + '}';
+        return "Voo{" + "id=" + id + ", origem=" + origem + ", destino=" + destino + ", data=" + data + ", duracao=" + duracao + ", companhia=" + companhia + ", capacidade=" + capacidade + ", aviao=" + aviao + ", estado=" + estado + ", dataCriacao=" + dataCriacao + ", dataModificacao=" + dataModificacao + '}';
     }
+    
+    
 
 }

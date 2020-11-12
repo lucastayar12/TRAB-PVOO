@@ -69,6 +69,7 @@ public class Teste {
                 case 2: //CRUD AEROPORTO                  
                     do {
                         op2 = gui.menuAeroporto();
+                        
                         switch (op2) {
                             case 1:
                                 Aeroporto ae = gui.criaAeroporto();
@@ -155,13 +156,13 @@ public class Teste {
                     } while (op2 != 5);
                     break;
 
-                case 4:
+                case 4://CRUD VOO
                     do {
                         op2 = gui.menuVoo();
 
                         switch (op2) {
                             case 1:
-                                Voo voo = gui.criaVoo();
+                                Voo voo = daovoo.criaVoo();
                                 conf = daovoo.inserir(voo);
 
                                 if (conf) {
@@ -174,7 +175,6 @@ public class Teste {
 
                             case 2:
                                 daovoo.mostra();
-
                                 break;
 
                             case 3:
@@ -204,7 +204,7 @@ public class Teste {
                     } while (op2 != 5);
                     break;
 
-                case 5:
+                case 5://CRUD DE ASSENTO DO VÔO
                     System.out.println("\nSaindo...\n");
                     break;
 

@@ -1,6 +1,7 @@
 package trabalho.pvoo;
 
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.Scanner;
 
 public class DAOPassageiro {
@@ -12,20 +13,20 @@ public class DAOPassageiro {
 
     public DAOPassageiro() {
         Passageiro p1 = new Passageiro();
-        p1.setNome("Suzane Hichtoffen");
-        p1.setNascimento("11/02/1986");
+        p1.setNome("Suzane von Richthofen");
+        p1.setNascimento(LocalDate.of(1983, Month.NOVEMBER, 3));
         p1.setDocumento("2131591851-10");
         this.inserir(p1);
         
         Passageiro p2 = new Passageiro();
         p2.setNome("Bruno Goleiro");
-        p2.setNascimento("10/05/1980");
+        p2.setNascimento(LocalDate.of(1984, Month.DECEMBER, 23));
         p2.setDocumento("1929529520-85");
         this.inserir(p2);
         
         Passageiro p3 = new Passageiro();
         p3.setNome("Adailton");
-        p3.setNascimento("28/06/1983");
+        p3.setNascimento(LocalDate.of(1980, Month.MAY, 20));
         p3.setDocumento("1849840068-32");
         this.inserir(p3);
      
@@ -85,15 +86,17 @@ public class DAOPassageiro {
                         passageiros[i].setDataModificacao(LocalDate.now());
                        
                         break;
+                        
                     case 2:
                         System.out.print("Digite o novo documento:");
                         String doc = scanner.nextLine();
                         passageiros[i].setDocumento(doc);
                         passageiros[i].setDataModificacao(LocalDate.now());
                         break;
+                        
                     case 3:
                         System.out.print("Digite a nova data de nascimento:");
-                        String dt_nasc = scanner.nextLine();
+                        LocalDate dt_nasc = LocalDate.parse(scanner.nextLine());
                         passageiros[i].setNascimento(dt_nasc);
                         passageiros[i].setDataModificacao(LocalDate.now());
                         break;
@@ -103,6 +106,19 @@ public class DAOPassageiro {
             }
         }
         return false;
+    }
+    
+    public Passageiro buscaPorId(int id){
+        
+        Passageiro pf = new Passageiro();
+        
+        for (Passageiro p : passageiros) {
+            if (p != null && p.getId() == id) {
+                pf = p;
+            }
+        }
+        
+       return pf;
     }
 
 }

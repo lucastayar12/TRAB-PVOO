@@ -1,6 +1,7 @@
 package trabalho.pvoo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Companhia_A {
@@ -14,6 +15,7 @@ public class Companhia_A {
 
     public Companhia_A() {
         this.dataCriacao = LocalDate.now();
+        this.dataModificacao = LocalDate.now();
         this.id = ++this.serial;
     }
 
@@ -84,7 +86,7 @@ public class Companhia_A {
 
     @Override
     public String toString() {
-        return "\nCompanhia Aéria\n" + "ID= " + id + ", Nome= " + nome + " Abreviacao= " + abreviacao + "\nData de criação= " + dataCriacao + " Data de modificação= " + dataModificacao + '\n';
+        return "\nCompanhia Aéria\n" + "ID= " + id + ", Nome= " + nome + " Abreviacao= " + abreviacao + "\nData de criação= " + dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " Data de modificação= " + dataModificacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '\n';
     }
 
 }

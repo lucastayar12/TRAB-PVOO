@@ -84,35 +84,29 @@ public class DAOAeroporto {
     }
 
     public boolean altera(int id) {
-        for (int i = 0; i < aeroportos.length; i++) {
-            Aeroporto aeroporto = aeroportos[i];
+        for (Aeroporto aeroporto : aeroportos) {
             if (aeroporto != null && aeroporto.getId() == id) {
-
                 op = gui.menuAlteraAeroporto();
-
                 switch (op) {
                     case 1:
                         System.out.print("Digite o novo nome:");
                         String nome = scanner.nextLine();
-                        aeroportos[i].setNome(nome);
-                        aeroportos[i].setDataModificacao(LocalDate.now());
+                        aeroporto.setNome(nome);
+                        aeroporto.setDataModificacao(LocalDate.now());
                         break;
-                        
                     case 2:
                         System.out.print("Digite a nova cidade:");
                         String cid = scanner.nextLine();
-                        aeroportos[i].setCidade(cid);
-                        aeroportos[i].setDataModificacao(LocalDate.now());
+                        aeroporto.setCidade(cid);
+                        aeroporto.setDataModificacao(LocalDate.now());
                         break;
-                        
                     case 3:
                         System.out.print("Digite a nova abreviação:");
                         String abrev = scanner.nextLine();
-                        aeroportos[i].setAbreviacao(abrev);
-                        aeroportos[i].setDataModificacao(LocalDate.now());
+                        aeroporto.setAbreviacao(abrev);
+                        aeroporto.setDataModificacao(LocalDate.now());
                         break;
                 }
-
                 return true;
             }
         }

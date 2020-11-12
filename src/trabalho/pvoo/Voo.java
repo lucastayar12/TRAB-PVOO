@@ -1,6 +1,7 @@
 package trabalho.pvoo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Voo {
@@ -9,7 +10,7 @@ public class Voo {
     private Aeroporto origem;
     private Aeroporto destino;
     private LocalDate data;
-    private String duracao;
+    private int duracao;
     private Companhia_A companhia;
     private long capacidade;
     private String aviao;
@@ -20,6 +21,7 @@ public class Voo {
 
     Voo() {
         dataCriacao = LocalDate.now();
+        dataModificacao = LocalDate.now();
         this.id = ++this.serial;
     }
 
@@ -51,11 +53,11 @@ public class Voo {
         this.data = data;
     }
 
-    public String getDuracao() {
+    public int getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(String duracao) {
+    public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
 
@@ -150,7 +152,7 @@ public class Voo {
 
     @Override
     public String toString() {
-        return "Voo{" + "id=" + id + ", origem=" + origem + ", destino=" + destino + ", data=" + data + ", duracao=" + duracao + ", companhia=" + companhia + ", capacidade=" + capacidade + ", aviao=" + aviao + ", estado=" + estado + ", dataCriacao=" + dataCriacao + ", dataModificacao=" + dataModificacao + '}';
+        return "\nVoo\n" + "ID= " + id + " Origem= " + origem.toString() + " Destino= " + destino.toString() + "\nData= " + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " Duracao= " + duracao + "\n" + companhia.toString() + " Capacidade= " + capacidade + "\nAvião= " + aviao + " Estado= " + estado + "\nData de Criação= " + dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " Data de Modificação= " + dataModificacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '\n';
     }
     
     

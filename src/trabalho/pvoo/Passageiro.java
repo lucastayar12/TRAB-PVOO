@@ -8,7 +8,7 @@ public class Passageiro {
 
     private long id;
     private String nome;
-    private String nascimento;
+    private LocalDate nascimento;
     private String documento;
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
@@ -17,6 +17,7 @@ public class Passageiro {
     Passageiro() {
       
         this.dataCriacao = LocalDate.now();
+        dataModificacao = LocalDate.now();
         this.id = ++this.serial;
     }
 
@@ -32,11 +33,11 @@ public class Passageiro {
         this.nome = nome;
     }
 
-    public String getNascimento() {
+    public LocalDate getNascimento() {
         return nascimento;
     }
 
-    public void setNascimento(String nascimento) {
+    public void setNascimento(LocalDate nascimento) {
         this.nascimento = nascimento;
     }
 
@@ -68,7 +69,7 @@ public class Passageiro {
 
     @Override
     public String toString() {
-        return "\nPassageiro\n" + "ID= " + id + " Nome= " + nome + "\nNascimento= " + nascimento + " Documento= " + documento + "\nData de Criação= " + dataCriacao + " Data de Modificacao= " + dataModificacao + '\n';
+        return "\nPassageiro\n" + "ID= " + id + " Nome= " + nome + "\nNascimento= " + nascimento.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " Documento= " + documento + "\nData de Criação= " + dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " Data de Modificacao= " + dataModificacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '\n';
     }
 
     @Override

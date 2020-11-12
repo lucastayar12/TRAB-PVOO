@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho.pvoo;
 
 import java.time.LocalDate;
 import java.util.Objects;
 
-/**
- *
- * @author Lucas
- */
 public class Assento {
     
     private long id;
@@ -24,6 +15,7 @@ public class Assento {
     
     Assento(){
         dataCriacao = LocalDate.now();
+        dataModificacao = LocalDate.now();
         this.id = ++this.serial;
     }
 
@@ -102,7 +94,7 @@ public class Assento {
 
     @Override
     public String toString() {
-        return "Assentos{" + "id=" + id + ", voo=" + voo + ", codAssento=" + codAssento + ", passageiro=" + passageiro + ", dataCriacao=" + dataCriacao + ", dataModificacao=" + dataModificacao + '}';
+        return "\nAssentos\n" + "ID= " + id + " Vôo= " + voo + "\nCódigo do Assento= " + codAssento + "\nPassageiro= " + passageiro + "\nData de Criação= " + dataCriacao + " Data de Modificação= " + dataModificacao + '\n';
     }
     
 }

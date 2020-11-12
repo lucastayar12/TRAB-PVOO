@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package trabalho.pvoo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-/**
- *
- * @author Lucas
- */
 public class Ticket {
     
     long id;
@@ -22,7 +14,7 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" + "id=" + id + ", valor=" + valor + ", voo=" + voo + ", passageiro=" + passageiro + ", dataCriacao=" + dataCriacao + ", dataModificacao=" + dataModificacao + '}';
+        return "Ticket{" + "id=" + id + ", valor=" + valor + ", voo=" + voo + ", passageiro=" + passageiro + ", dataCriacao=" + dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))  + ", dataModificacao=" + dataModificacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '}';
     }
 
 }

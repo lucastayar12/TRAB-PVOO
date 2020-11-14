@@ -127,7 +127,69 @@ public class GUI {
 
         return ca;
     }
+    
+    public Voo criaVoo(DAOAeroporto ae, DAOCompanhia_A companhiaa) {
 
+        Scanner scanner = new Scanner(System.in);
+        Voo voo = new Voo();
+
+        ae.mostra();
+        System.out.print("Digite ID da cidade de origem:");
+        int id = Integer.parseInt(scanner.nextLine());
+        voo.setOrigem(ae.buscaPorId(id));
+
+        ae.mostra();
+        System.out.print("Digite ID da cidade de destino:");
+        id = Integer.parseInt(scanner.nextLine());
+        voo.setDestino(ae.buscaPorId(id));
+
+        System.out.print("Digite a data do voo:");
+        LocalDate data = LocalDate.parse(scanner.nextLine());
+        voo.setData(data);
+
+        System.out.print("Digite a duração do voo:");
+        int duracao = Integer.parseInt(scanner.nextLine());
+        voo.setDuracao(duracao);
+
+        companhiaa.mostra();
+        System.out.print("Digite ID da Companhia Aéria:");
+        id = Integer.parseInt(scanner.nextLine());
+        voo.setCompanhia(companhiaa.buscaPorId(id));
+
+        System.out.print("Digite a capacidade do voo:");
+        long capacidade = Integer.parseInt(scanner.nextLine());
+        voo.setCapacidade(capacidade);
+
+        System.out.print("Digite o avião do voo:");
+        String avi = scanner.nextLine();
+        voo.setAviao(avi);
+
+        return voo;
+    }
+
+    public Assento criaAssento(DAOVoo daovoo, DAOPassageiro daop) {
+
+        Assento ass = new Assento();
+        Scanner scanner = new Scanner(System.in);
+
+        daovoo.mostra();
+        System.out.print("Digite o ID do Vôo que deseja selecionar:");
+        int id = Integer.parseInt(scanner.nextLine());
+        ass.setVoo(daovoo.buscaPorId(id));
+
+        System.out.print("\nDigite o código do Asssento:");
+        String codas = scanner.nextLine();
+        ass.setCodAssento(codas);
+
+        daop.mostra();
+        System.out.print("Digite o ID do passageiro que deseja selecionar:");
+        id = Integer.parseInt(scanner.nextLine());
+        ass.setPassageiro(daop.buscaPorId(id));
+
+        return ass;
+
+    }
+    
     public int menuAlteraPassageiro() {
 
         Scanner scanner = new Scanner(System.in);

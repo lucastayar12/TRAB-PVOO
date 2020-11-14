@@ -6,15 +6,13 @@ import java.util.Scanner;
 
 public class DAOVoo {
 
-    DAOAeroporto daoaeroporto = new DAOAeroporto();
-    DAOCompanhia_A daocompanhiaa = new DAOCompanhia_A();
     Scanner scanner = new Scanner(System.in);
     GUI gui = new GUI();
 
     private Voo[] voos = new Voo[10];
     int op = 0;
 
-    DAOVoo() {
+    DAOVoo(DAOAeroporto daoaeroporto, DAOCompanhia_A daocompanhiaa) {
         Voo v1 = new Voo();
         v1.setOrigem(daoaeroporto.buscaPorId(2));//UBERABA
         v1.setDestino(daoaeroporto.buscaPorId(1));//SÃO PAULO
@@ -65,7 +63,7 @@ public class DAOVoo {
         return false;
     }
 
-    public boolean altera(int id) {
+    public boolean altera(int id, DAOAeroporto daoaeroporto, DAOCompanhia_A daocompanhiaa) {
         for (int i = 0; i < voos.length; i++) {
             Voo voo = voos[i];
             if (voo != null && voo.getId() == id) {
@@ -143,45 +141,6 @@ public class DAOVoo {
         return false;
     }
 
-    public Voo criaVoo() {
-
-        Scanner scanner = new Scanner(System.in);
-        Voo voo = new Voo();
-
-        daoaeroporto.mostra();
-        System.out.print("Digite ID da cidade de origem:");
-        int id = Integer.parseInt(scanner.nextLine());
-        voo.setOrigem(daoaeroporto.buscaPorId(id));
-
-        daoaeroporto.mostra();
-        System.out.print("Digite ID da cidade de destino:");
-        id = Integer.parseInt(scanner.nextLine());
-        voo.setDestino(daoaeroporto.buscaPorId(id));
-
-        System.out.print("Digite a data do voo:");
-        LocalDate data = LocalDate.parse(scanner.nextLine());
-        voo.setData(data);
-
-        System.out.print("Digite a duração do voo:");
-        int duracao = Integer.parseInt(scanner.nextLine());
-        voo.setDuracao(duracao);
-
-        daocompanhiaa.mostra();
-        System.out.print("Digite ID da Companhia Aéria:");
-        id = Integer.parseInt(scanner.nextLine());
-        voo.setCompanhia(daocompanhiaa.buscaPorId(id));
-
-        System.out.print("Digite a capacidade do voo:");
-        long capacidade = Integer.parseInt(scanner.nextLine());
-        voo.setCapacidade(capacidade);
-
-        System.out.print("Digite o avião do voo:");
-        String avi = scanner.nextLine();
-        voo.setAviao(avi);
-
-        return voo;
-    }
-    
     public Voo buscaPorId(int id){
         
         Voo voof = new Voo();

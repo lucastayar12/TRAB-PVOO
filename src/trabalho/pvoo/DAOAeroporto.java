@@ -112,18 +112,15 @@ public class DAOAeroporto {
         }
         return false;
     }
-    
-    public Aeroporto buscaPorId(int id){
-        
-        Aeroporto aeroportof = new Aeroporto();
-        
+
+    public Aeroporto buscaPorId(int id) {
+
         for (Aeroporto aeroporto : aeroportos) {
             if (aeroporto != null && aeroporto.getId() == id) {
-                aeroportof = aeroporto;
+                return aeroporto;
             }
         }
-        
-       return aeroportof;
+        return null;
     }
 
 }

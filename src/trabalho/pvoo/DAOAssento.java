@@ -5,8 +5,6 @@ import java.util.Scanner;
 
 public class DAOAssento {
 
-    DAOPassageiro daopassageiro = new DAOPassageiro();
-    DAOVoo daovoo = new DAOVoo();
     Assento assentos[] = new Assento[10];
     GUI gui = new GUI();
     int op;
@@ -51,7 +49,7 @@ public class DAOAssento {
         return false;
     }
 
-    public boolean altera(int id) {
+    public boolean altera(int id, DAOVoo daovoo, DAOPassageiro daopassageiro) {
         for (Assento ass : assentos) {
             if (ass != null && ass.getId() == id) {
                 op = gui.menuAlteraPassageiro();
@@ -82,25 +80,5 @@ public class DAOAssento {
         return false;
     }
 
-    public Assento criaAssento() {
-
-        Assento ass = new Assento();
-
-        daovoo.mostra();
-        System.out.print("Digite o ID do Vôo que deseja selecionar:");
-        int id = Integer.parseInt(scanner.nextLine());
-        ass.setVoo(daovoo.buscaPorId(id));
-
-        System.out.print("\nDigite o código do Asssento:");
-        String codas = scanner.nextLine();
-        ass.setCodAssento(codas);
-
-        daopassageiro.mostra();
-        System.out.print("Digite o ID do passageiro que deseja selecionar:");
-        id = Integer.parseInt(scanner.nextLine());
-        ass.setPassageiro(daopassageiro.buscaPorId(id));
-
-        return ass;
-
-    }
+    
 }

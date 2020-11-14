@@ -5,7 +5,7 @@ import java.time.Month;
 import java.util.Scanner;
 
 public class DAOPassageiro {
-    
+
     Scanner scanner = new Scanner(System.in);
     GUI gui = new GUI();
     private Passageiro[] passageiros = new Passageiro[10];
@@ -17,19 +17,19 @@ public class DAOPassageiro {
         p1.setNascimento(LocalDate.of(1983, Month.NOVEMBER, 3));
         p1.setDocumento("2131591851-10");
         this.inserir(p1);
-        
+
         Passageiro p2 = new Passageiro();
         p2.setNome("Bruno Goleiro");
         p2.setNascimento(LocalDate.of(1984, Month.DECEMBER, 23));
         p2.setDocumento("1929529520-85");
         this.inserir(p2);
-        
+
         Passageiro p3 = new Passageiro();
         p3.setNome("Adailton");
         p3.setNascimento(LocalDate.of(1980, Month.MAY, 20));
         p3.setDocumento("1849840068-32");
         this.inserir(p3);
-     
+
     }
 
     int proximaPosicaoLivre() {
@@ -69,31 +69,30 @@ public class DAOPassageiro {
         }
         return false;
     }
-    
+
     public boolean altera(int id) {
         for (int i = 0; i < passageiros.length; i++) {
             Passageiro passageiro = passageiros[i];
             if (passageiro != null && passageiro.getId() == id) {
-                
+
                 op = gui.menuAlteraPassageiro();
-                
-                switch(op)
-                {
+
+                switch (op) {
                     case 1:
                         System.out.print("Digite o novo nome:");
                         String nome = scanner.nextLine();
                         passageiros[i].setNome(nome);
                         passageiros[i].setDataModificacao(LocalDate.now());
-                       
+
                         break;
-                        
+
                     case 2:
                         System.out.print("Digite o novo documento:");
                         String doc = scanner.nextLine();
                         passageiros[i].setDocumento(doc);
                         passageiros[i].setDataModificacao(LocalDate.now());
                         break;
-                        
+
                     case 3:
                         System.out.print("Digite a nova data de nascimento:");
                         LocalDate dt_nasc = LocalDate.parse(scanner.nextLine());
@@ -101,24 +100,22 @@ public class DAOPassageiro {
                         passageiros[i].setDataModificacao(LocalDate.now());
                         break;
                 }
-                
+
                 return true;
             }
         }
         return false;
     }
-    
-    public Passageiro buscaPorId(int id){
-        
-        Passageiro pf = new Passageiro();
-        
+
+    public Passageiro buscaPorId(int id) {
+
         for (Passageiro p : passageiros) {
             if (p != null && p.getId() == id) {
-                pf = p;
+                return p;
             }
         }
-        
-       return pf;
+
+        return null;
     }
 
 }

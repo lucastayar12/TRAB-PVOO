@@ -10,7 +10,7 @@ public class Teste {
         DAOPassageiro daopassageiro = new DAOPassageiro();
         DAOAeroporto daoaeroporto = new DAOAeroporto();
         DAOCompanhia_A daocompanhiaa = new DAOCompanhia_A();
-        DAOVoo daovoo = new DAOVoo();
+        DAOVoo daovoo = new DAOVoo(daoaeroporto, daocompanhiaa);
         GUI gui = new GUI();
         int op;
         int op2;
@@ -162,7 +162,7 @@ public class Teste {
 
                         switch (op2) {
                             case 1:
-                                Voo voo = daovoo.criaVoo();
+                                Voo voo = gui.criaVoo(daoaeroporto, daocompanhiaa);
                                 conf = daovoo.inserir(voo);
 
                                 if (conf) {
@@ -181,7 +181,7 @@ public class Teste {
                                 daovoo.mostra();
                                 System.out.print("Digite o ID do vôo que deseja alterar:");
                                 id = Integer.parseInt(scanner.nextLine());
-                                daovoo.altera(id);
+                                daovoo.altera(id, daoaeroporto, daocompanhiaa);
 
                                 break;
 

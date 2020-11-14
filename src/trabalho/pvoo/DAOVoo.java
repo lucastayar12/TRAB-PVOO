@@ -22,7 +22,57 @@ public class DAOVoo {
         v1.setCapacidade(2);
         v1.setAviao("BOING 777");
         this.inserir(v1);
-
+        
+        Voo v2 = new Voo();
+        v2.setOrigem(daoaeroporto.buscaPorId(1));//SÃO PAULO
+        v2.setDestino(daoaeroporto.buscaPorId(4));//LONDRES
+        v2.setData(LocalDate.of(2021, Month.JULY, 26));
+        v2.setDuracao(12600);
+        v2.setCompanhia(daocompanhiaa.buscaPorId(2));
+        v2.setCapacidade(2);
+        v2.setAviao("BOING 123");
+        this.inserir(v2);
+        
+        Voo v3 = new Voo();
+        v3.setOrigem(daoaeroporto.buscaPorId(1));//SÃO PAULO 
+        v3.setDestino(daoaeroporto.buscaPorId(5));//PARIS
+        v3.setData(LocalDate.of(2021, Month.JULY, 26));
+        v3.setDuracao(10600);
+        v3.setCompanhia(daocompanhiaa.buscaPorId(3));
+        v3.setCapacidade(2);
+        v3.setAviao("BOING 568");
+        this.inserir(v3);
+        
+        Voo v4 = new Voo();
+        v4.setOrigem(daoaeroporto.buscaPorId(3));//NY 
+        v4.setDestino(daoaeroporto.buscaPorId(5));//PARIS
+        v4.setData(LocalDate.of(2021, Month.JULY, 27));
+        v4.setDuracao(7500);
+        v4.setCompanhia(daocompanhiaa.buscaPorId(1));
+        v4.setCapacidade(2);
+        v4.setAviao("BOING 974");
+        this.inserir(v4);
+        
+        Voo v5 = new Voo();
+        v5.setOrigem(daoaeroporto.buscaPorId(3));//NY
+        v5.setDestino(daoaeroporto.buscaPorId(4));//LONDRES
+        v5.setData(LocalDate.of(2021, Month.JULY, 27));
+        v5.setDuracao(8000);
+        v5.setCompanhia(daocompanhiaa.buscaPorId(3));
+        v5.setCapacidade(2);
+        v5.setAviao("BOING 971");
+        this.inserir(v5);
+        
+        Voo v6 = new Voo();
+        v6.setOrigem(daoaeroporto.buscaPorId(4));//LONDRES
+        v6.setDestino(daoaeroporto.buscaPorId(5));//PARIS
+        v6.setData(LocalDate.of(2021, Month.JULY, 28));
+        v6.setDuracao(1500);
+        v6.setCompanhia(daocompanhiaa.buscaPorId(2));
+        v6.setCapacidade(2);
+        v6.setAviao("BOING 111");
+        this.inserir(v6);
+ 
     }
 
     int proximaPosicaoLivre() {

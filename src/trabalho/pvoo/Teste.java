@@ -248,14 +248,15 @@ public class Teste {
                                 break;
                             default:
                                 System.out.println("Opção Inválida");
-                             }
-                        } while (op2 != 5);
+                        }
+                    } while (op2 != 5);
             }
         } while (op != 6);
-        }        
-          public static void main(String[] args) {
-                 
-                 new Teste();
-    
-          }
+    }
+
+    public static void main(String[] args) {
+
+        new Teste();
+
+    }
 }

@@ -250,8 +250,17 @@ public class Teste {
                                 System.out.println("Opção Inválida");
                         }
                     } while (op2 != 5);
+
+                case 6:
+                    daovoo.mostra();
+                    System.out.println("Digite o ID do vôo que deseja executar:");
+                    id = Integer.parseInt(scanner.nextLine());
+                    TestDijkstraAlgorithm1 Test = new TestDijkstraAlgorithm1();
+                    Test.Executa(daovoo.buscaPorId(id));
+
+                    break;
             }
-        } while (op != 6);
+        } while (op != 7);
     }
 
     public static void main(String[] args) {

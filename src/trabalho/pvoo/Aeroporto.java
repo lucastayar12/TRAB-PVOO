@@ -6,13 +6,13 @@ import java.util.Objects;
 
 public class Aeroporto {
 
-    private long id;
+    private int id;
     private String nome;
     private String abreviacao;
     private String cidade;
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
-    private static long serial;
+    private static int serial;
 
     Aeroporto() {
         dataCriacao = LocalDate.now();
@@ -20,7 +20,7 @@ public class Aeroporto {
         this.id = ++this.serial;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

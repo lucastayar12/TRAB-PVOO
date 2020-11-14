@@ -262,6 +262,7 @@ public class GUI {
         System.out.println("3- CRUD Companhia Aérea");
         System.out.println("4- CRUD Vôo");
         System.out.println("5- CRUD Assento do Vôo");
+        System.out.println("5- Executa");
         System.out.print("Digite uma opção: ");
         int op = Integer.parseInt(scanner.nextLine());
 

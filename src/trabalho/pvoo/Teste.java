@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Teste {
 
+    @SuppressWarnings("empty-statement")
     public Teste() {
 
         Scanner scanner = new Scanner(System.in);
@@ -11,6 +12,7 @@ public class Teste {
         DAOAeroporto daoaeroporto = new DAOAeroporto();
         DAOCompanhia_A daocompanhiaa = new DAOCompanhia_A();
         DAOVoo daovoo = new DAOVoo(daoaeroporto, daocompanhiaa);
+        DAOAssento daoassento = new DAOAssento();
         GUI gui = new GUI();
         int op;
         int op2;
@@ -69,7 +71,7 @@ public class Teste {
                 case 2: //CRUD AEROPORTO                  
                     do {
                         op2 = gui.menuAeroporto();
-                        
+
                         switch (op2) {
                             case 1:
                                 Aeroporto ae = gui.criaAeroporto();
@@ -204,18 +206,56 @@ public class Teste {
                     } while (op2 != 5);
                     break;
 
-                case 5://CRUD DE ASSENTO DO VÔO
-                    System.out.println("\nSaindo...\n");
-                    break;
+                case 5:  //CRUD DE ASSENTO DO VÔO
+                    do {
+                        op2 = gui.menuAssento();
 
-                default:
-                    System.out.println("Opção Inválida");
+                        switch (op2) {
+                            case 1:
+                                Assento ass = gui.criaAssento(daovoo, daopassageiro);
+                                conf = daoassento.inserir(ass);
+                                if (conf) {
+                                    System.out.println("Assento foi inserido. ");
+                                } else {
 
+                                    System.out.println("Assento nao foi criado. ");
+                                }
+                                break;
+
+                            case 2:
+                                daoassento.mostra();
+                                break;
+
+                            case 3:
+                                daoassento.mostra();
+                                System.out.print("Digite o ID do assento que deseja alterar: ");
+                                id = Integer.parseInt(scanner.nextLine());
+                                daoassento.altera(id, daovoo, daopassageiro);
+
+                                break;
+
+                            case 4:
+                                daoassento.mostra();
+                                System.out.print("Dgite o ID do assento que deseja excluir: ");
+                                id = Integer.parseInt(scanner.nextLine());
+                                daoassento.exclui(id);
+
+                                break;
+                            case 5:
+
+                                System.out.println("\nSaindo...\n");
+
+                                break;
+                            default:
+                                System.out.println("Opção Inválida");
+                             }
+                        } while (op2 != 5);
             }
-        } while (op != 5);
-    }
-
-    public static void main(String[] args) {
-        new Teste();
-    }
+        } while (op != 6);
+        }        
+          public static void main(String[] args) {
+                 
+                 new Teste();
+    
+          }
 }

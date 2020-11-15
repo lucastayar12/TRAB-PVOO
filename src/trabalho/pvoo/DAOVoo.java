@@ -12,19 +12,30 @@ public class DAOVoo {
     private Voo[] voos = new Voo[10];
     int op = 0;
 
-    DAOVoo(DAOAeroporto daoaeroporto, DAOCompanhia_A daocompanhiaa) {
+    DAOVoo(DAOAeroporto daoaeroporto, DAOCompanhia_A daocompanhiaa, DAOAssento daoassento) {
         Voo v1 = new Voo();
-        v1.setOrigem(daoaeroporto.buscaPorId(2));//UBERABA
-        v1.setDestino(daoaeroporto.buscaPorId(1));//SÃO PAULO
+        v1.setOrigem(daoaeroporto.buscaPorId(1));//UBERABA
+        v1.setDestino(daoaeroporto.buscaPorId(2));//SÃO PAULO
         v1.setData(LocalDate.of(2021, Month.JULY, 25));
         v1.setDuracao(500);
         v1.setCompanhia(daocompanhiaa.buscaPorId(1));
         v1.setCapacidade(2);
+        
+        Assento ass = new Assento();
+        ass.setVoo(v1);
+        ass.setCodAssento("001");
+        daoassento.inserir(ass);
+        
+        Assento ass2 = new Assento();
+        ass2.setVoo(v1);
+        ass2.setCodAssento("002");
+        daoassento.inserir(ass2);
+        
         v1.setAviao("BOING 777");
         this.inserir(v1);
-        
+
         Voo v2 = new Voo();
-        v2.setOrigem(daoaeroporto.buscaPorId(1));//SÃO PAULO
+        v2.setOrigem(daoaeroporto.buscaPorId(2));//SÃO PAULO
         v2.setDestino(daoaeroporto.buscaPorId(4));//LONDRES
         v2.setData(LocalDate.of(2021, Month.JULY, 26));
         v2.setDuracao(12600);
@@ -32,9 +43,9 @@ public class DAOVoo {
         v2.setCapacidade(2);
         v2.setAviao("BOING 123");
         this.inserir(v2);
-        
+
         Voo v3 = new Voo();
-        v3.setOrigem(daoaeroporto.buscaPorId(1));//SÃO PAULO 
+        v3.setOrigem(daoaeroporto.buscaPorId(2));//SÃO PAULO 
         v3.setDestino(daoaeroporto.buscaPorId(5));//PARIS
         v3.setData(LocalDate.of(2021, Month.JULY, 26));
         v3.setDuracao(10600);
@@ -42,7 +53,7 @@ public class DAOVoo {
         v3.setCapacidade(2);
         v3.setAviao("BOING 568");
         this.inserir(v3);
-        
+
         Voo v4 = new Voo();
         v4.setOrigem(daoaeroporto.buscaPorId(3));//NY 
         v4.setDestino(daoaeroporto.buscaPorId(5));//PARIS
@@ -52,7 +63,17 @@ public class DAOVoo {
         v4.setCapacidade(2);
         v4.setAviao("BOING 974");
         this.inserir(v4);
-        
+
+        Voo v7 = new Voo();
+        v7.setOrigem(daoaeroporto.buscaPorId(5));//NY 
+        v7.setDestino(daoaeroporto.buscaPorId(3));//PARIS
+        v7.setData(LocalDate.of(2021, Month.JULY, 27));
+        v7.setDuracao(7500);
+        v7.setCompanhia(daocompanhiaa.buscaPorId(1));
+        v7.setCapacidade(2);
+        v7.setAviao("BOING 322");
+        this.inserir(v7);
+
         Voo v5 = new Voo();
         v5.setOrigem(daoaeroporto.buscaPorId(3));//NY
         v5.setDestino(daoaeroporto.buscaPorId(4));//LONDRES
@@ -62,7 +83,7 @@ public class DAOVoo {
         v5.setCapacidade(2);
         v5.setAviao("BOING 971");
         this.inserir(v5);
-        
+
         Voo v6 = new Voo();
         v6.setOrigem(daoaeroporto.buscaPorId(4));//LONDRES
         v6.setDestino(daoaeroporto.buscaPorId(5));//PARIS
@@ -72,7 +93,7 @@ public class DAOVoo {
         v6.setCapacidade(2);
         v6.setAviao("BOING 111");
         this.inserir(v6);
- 
+
     }
 
     int proximaPosicaoLivre() {
@@ -191,16 +212,33 @@ public class DAOVoo {
         return false;
     }
 
-    public Voo buscaPorId(int id){
-        
-        Voo voof = new Voo();
-        
+    public Voo buscaPorId(int id) {
+
         for (Voo voo : voos) {
             if (voo != null && voo.getId() == id) {
-                voof = voo;
+                return voo;
             }
         }
-        
-       return voof;
+        return null;
+    }
+
+    public Voo verifVooOrigem(int id) {
+
+        for (Voo voo : voos) {
+            if (voo != null && voo.getOrigem().getId() == id) {
+                return voo;
+            }
+        }
+        return null;
+    }
+
+    public Voo verifVooDestino(int id) {
+
+        for (Voo voo : voos) {
+            if (voo != null && voo.getDestino().getId() == id) {
+                return voo;
+            }
+        }
+        return null;
     }
 }

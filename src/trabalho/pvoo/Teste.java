@@ -4,19 +4,19 @@ import java.util.Scanner;
 
 public class Teste {
 
-    @SuppressWarnings("empty-statement")
     public Teste() {
 
         Scanner scanner = new Scanner(System.in);
         DAOPassageiro daopassageiro = new DAOPassageiro();
         DAOAeroporto daoaeroporto = new DAOAeroporto();
         DAOCompanhia_A daocompanhiaa = new DAOCompanhia_A();
-        DAOVoo daovoo = new DAOVoo(daoaeroporto, daocompanhiaa);
         DAOAssento daoassento = new DAOAssento();
+        DAOVoo daovoo = new DAOVoo(daoaeroporto, daocompanhiaa, daoassento);
+        DAOTicket daoticket = new DAOTicket();
         GUI gui = new GUI();
         int op;
         int op2;
-        int id;
+        int id, id2;
         boolean conf;
 
         do {
@@ -252,12 +252,33 @@ public class Teste {
                     } while (op2 != 5);
 
                 case 6:
-                    daovoo.mostra();
+                    /*daovoo.mostra();
                     System.out.println("Digite o ID do vôo que deseja executar:");
                     id = Integer.parseInt(scanner.nextLine());
+                    
+                    Test.Executa(daovoo.buscaPorId(id));*/
+                    
                     TestDijkstraAlgorithm1 Test = new TestDijkstraAlgorithm1();
-                    Test.Executa(daovoo.buscaPorId(id));
-
+                    daopassageiro.mostra();
+                    System.out.print("Digite o ID do passageiro que vai viajar:");
+                    id = Integer.parseInt(scanner.nextLine());
+                    Passageiro p = daopassageiro.buscaPorId(id);
+                  
+                    System.out.println("Selecione a cidade de origem");
+                    id = gui.menuCidade();
+                    System.out.println("Selecione a cidade de destino");
+                    id2 = gui.menuCidade();
+                    
+                    /*daoassento.mostra();
+                    System.out.println("Digite o ID do assento:");
+                    id = Integer.parseInt(scanner.nextLine());
+                    Assento ass = daoassento.buscaPorId(id);
+                    
+                    ass.setPassageiro(p);*/
+                    double total = Test.Executa2(id, id2, daovoo, p);
+                    
+                    System.out.println("\nO valor total da viagem é de R$ "  + total + "\n");                
+                 
                     break;
             }
         } while (op != 7);

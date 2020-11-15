@@ -80,5 +80,15 @@ public class DAOAssento {
         return false;
     }
 
-    
+    public Assento buscaPorId(int id) {
+
+        for (Assento ass : assentos) {
+            if (ass != null && ass.getId() == id) {
+                return ass;
+            }
+        }
+
+        return null;
+    }
+
 }

@@ -262,12 +262,28 @@ public class GUI {
         System.out.println("3- CRUD Companhia Aérea");
         System.out.println("4- CRUD Vôo");
         System.out.println("5- CRUD Assento do Vôo");
-        System.out.println("5- Executa");
+        System.out.println("6- Executa vôo");
         System.out.print("Digite uma opção: ");
         int op = Integer.parseInt(scanner.nextLine());
 
         return op;
 
+    }
+    
+    public int menuCidade(){
+        Scanner scanner = new Scanner(System.in);
+        int id;
+        
+        System.out.println("\n1- Uberaba");
+        System.out.println("2- São Paulo");
+        System.out.println("3- Nova Iorque");
+        System.out.println("4- Londres");
+        System.out.println("5- Paris");
+        System.out.print("Digite uma opção:");
+        
+        
+        return id = Integer.parseInt(scanner.nextLine());
+        
     }
 
 }

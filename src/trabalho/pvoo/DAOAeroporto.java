@@ -13,17 +13,17 @@ public class DAOAeroporto {
 
     public DAOAeroporto() {
 
-        Aeroporto ae = new Aeroporto();
-        ae.setNome("Aeroporto de São Paulo");
-        ae.setCidade("São Paulo");
-        ae.setAbreviacao("SP");
-        this.inserir(ae);
-
         Aeroporto ae4 = new Aeroporto();
         ae4.setNome("Aeroporto de Uberaba");
         ae4.setCidade("Uberaba");
         ae4.setAbreviacao("URA");
         this.inserir(ae4);
+        
+        Aeroporto ae = new Aeroporto();
+        ae.setNome("Aeroporto de São Paulo");
+        ae.setCidade("São Paulo");
+        ae.setAbreviacao("SP");
+        this.inserir(ae);
 
         Aeroporto ae5 = new Aeroporto();
         ae5.setNome("Aeroporto de Nova Iorque");

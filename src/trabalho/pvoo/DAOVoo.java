@@ -20,17 +20,17 @@ public class DAOVoo {
         v1.setDuracao(500);
         v1.setCompanhia(daocompanhiaa.buscaPorId(1));
         v1.setCapacidade(2);
-        
+
         Assento ass = new Assento();
         ass.setVoo(v1);
         ass.setCodAssento("001");
         daoassento.inserir(ass);
-        
+
         Assento ass2 = new Assento();
         ass2.setVoo(v1);
         ass2.setCodAssento("002");
         daoassento.inserir(ass2);
-        
+
         v1.setAviao("BOING 777");
         this.inserir(v1);
 
@@ -65,8 +65,8 @@ public class DAOVoo {
         this.inserir(v4);
 
         Voo v7 = new Voo();
-        v7.setOrigem(daoaeroporto.buscaPorId(5));//NY 
-        v7.setDestino(daoaeroporto.buscaPorId(3));//PARIS
+        v7.setOrigem(daoaeroporto.buscaPorId(5));//PARIS 
+        v7.setDestino(daoaeroporto.buscaPorId(3));//NY
         v7.setData(LocalDate.of(2021, Month.JULY, 27));
         v7.setDuracao(7500);
         v7.setCompanhia(daocompanhiaa.buscaPorId(1));
@@ -220,6 +220,16 @@ public class DAOVoo {
             }
         }
         return null;
+    }
+
+    Voo buscaPorNome(String nome) {
+        for (Voo voo : voos) {
+            if (voo != null && voo.getOrigem().getNome().equals(nome)) {
+                return voo;
+            }
+        }
+        return null;
+
     }
 
     public Voo verifVooOrigem(int id) {

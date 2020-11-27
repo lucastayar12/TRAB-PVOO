@@ -15,31 +15,31 @@ public class DAOAeroporto {
 
         Aeroporto ae4 = new Aeroporto();
         ae4.setNome("Aeroporto de Uberaba");
-        ae4.setCidade("Uberaba");
+        ae4.setCidade("UBERABA");
         ae4.setAbreviacao("URA");
         this.inserir(ae4);
         
         Aeroporto ae = new Aeroporto();
         ae.setNome("Aeroporto de São Paulo");
-        ae.setCidade("São Paulo");
+        ae.setCidade("SAOPAULO");
         ae.setAbreviacao("SP");
         this.inserir(ae);
 
         Aeroporto ae5 = new Aeroporto();
         ae5.setNome("Aeroporto de Nova Iorque");
-        ae5.setCidade("Nova Iorque");
+        ae5.setCidade("NOVAIORQUE");
         ae5.setAbreviacao("NY");
         this.inserir(ae5);
 
         Aeroporto ae3 = new Aeroporto();
         ae3.setNome("Aeroporto de Londres");
-        ae3.setCidade("Londres");
+        ae3.setCidade("LONDRES");
         ae3.setAbreviacao("LON");
         this.inserir(ae3);
 
         Aeroporto ae2 = new Aeroporto();
         ae2.setNome("Aeroporto de Paris");
-        ae2.setCidade("Paris");
+        ae2.setCidade("PARIS");
         ae2.setAbreviacao("PAR");
         this.inserir(ae2);
 

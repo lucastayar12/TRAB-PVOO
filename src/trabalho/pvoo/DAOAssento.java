@@ -91,4 +91,18 @@ public class DAOAssento {
         return null;
     }
 
+    public Assento buscarVoo(Voo voo, DAOAssento daoassento) {
+        
+        Assento assaux;
+        for (Assento ass : assentos) {
+            if (ass != null && ass.getVoo() == voo) {
+                System.out.println(ass.toString());
+            }        
+        }
+        System.out.print("\nDigite o ID do assento:");
+	int id = Integer.parseInt(scanner.nextLine());
+	return assaux = daoassento.buscaPorId(id);
+        
+    }
+
 }

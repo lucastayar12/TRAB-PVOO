@@ -250,36 +250,29 @@ public class Teste {
                                 System.out.println("Opção Inválida");
                         }
                     } while (op2 != 5);
+                    break;
 
-                case 6:
-                    /*daovoo.mostra();
-                    System.out.println("Digite o ID do vôo que deseja executar:");
-                    id = Integer.parseInt(scanner.nextLine());
-                    
-                    Test.Executa(daovoo.buscaPorId(id));*/
-                    
+                case 6://EXECUTA VOO
+
                     TestDijkstraAlgorithm1 Test = new TestDijkstraAlgorithm1();
                     daopassageiro.mostra();
                     System.out.print("Digite o ID do passageiro que vai viajar:");
                     id = Integer.parseInt(scanner.nextLine());
                     Passageiro p = daopassageiro.buscaPorId(id);
-                  
+
                     System.out.println("Selecione a cidade de origem");
                     id = gui.menuCidade();
                     System.out.println("Selecione a cidade de destino");
                     id2 = gui.menuCidade();
-                    
-                    /*daoassento.mostra();
-                    System.out.println("Digite o ID do assento:");
-                    id = Integer.parseInt(scanner.nextLine());
-                    Assento ass = daoassento.buscaPorId(id);
-                    
-                    ass.setPassageiro(p);*/
-                    double total = Test.Executa2(id, id2, daovoo, p);
-                    
-                    System.out.println("\nO valor total da viagem é de R$ "  + total + "\n");                
-                 
+
+                    double total = Test.Executa2(id, id2, daovoo, p, daoassento);
+
+                    System.out.println("\nO valor total da viagem é de R$ " + total + "\n");
+
                     break;
+
+                default:
+                    System.out.println("Opção Inválida");
             }
         } while (op != 7);
     }

@@ -48,29 +48,11 @@ public class TestDijkstraAlgorithm1 {
 
     }
 
-    public double Executa2(int id, int id2, DAOVoo daovoo, Passageiro p) {
+    public double Executa2(int id, int id2, DAOVoo daovoo, Passageiro p, DAOAssento daoassento) {
 
         CidadesDistancia c1 = new CidadesDistancia("UBERABA", "SAO PAULO", 500);
-        //...
-        //...
 
         double valorTotal = 0;
-
-        Voo vooo = daovoo.verifVooOrigem(id);
-        Voo vood = daovoo.verifVooDestino(id2);
-
-        Ticket ticket = new Ticket();
-        ticket.setVoo(vooo);
-        ticket.setPassageiro(p);
-        ticket.setValor(100);
-        daoticket.inserir(ticket);
-        
-        vooo.setEstado("Executado");
-
-        valorTotal = valorTotal + ticket.getValor();
-
-        
-
         int cont = 0;
 
         int ido = id - 1;
@@ -87,50 +69,43 @@ public class TestDijkstraAlgorithm1 {
         int totalDistance = 0;
         path.size();
         for (Vertex vertex : path) {
-            System.out.println(vertex);
-            
-            if (cont > 2) {
-                Ticket tnew = new Ticket();
-                tnew.setVoo(daovoo.buscaPorId(cont));
-                tnew.setPassageiro(p);
-                tnew.setValor(100);
-                daoticket.inserir(tnew);
-                
-                Voo voo = daovoo.buscaPorId(cont);
-                voo.setEstado("Executado");
-                
-
-                valorTotal = valorTotal + tnew.getValor();
-            }
             cont++;
-            
-            if(cont == path.size() && cont <= 2){
-                
-                ticket.setVoo(vooo);
-                Voo voo = daovoo.buscaPorId(cont);
-                voo.setEstado("Executado");
-            }
-            
-            if(cont == path.size() && cont > 2){
-                Ticket tf = new Ticket();
-                tf.setVoo(vood);
-                tf.setPassageiro(p);
-                tf.setValor(100);
-                daoticket.inserir(tf);
-                
-                Voo voo = daovoo.buscaPorId(cont);
-                voo.setEstado("Executado");
-                
+            System.out.println(vertex);
 
-                valorTotal = valorTotal + tf.getValor();
+            if (cont >= 2 && cont % 2 == 0) {
+                for (int i = 1; i < 8; i++) {
+                    if (path.get(cont - 2).getName().equals(daovoo.buscaPorId(i).getOrigem().getCidade())) {
+                        for (int j = 1; j < 8; j++) {
+                            if (vertex.getName().equals(daovoo.buscaPorId(j).getDestino().getCidade())) {
+                                if (i == j) {
+                                    Voo voo = daovoo.buscaPorId(i);
+
+                                    System.out.println("Escolha um assento para este voo");
+                                    Assento assaux = daoassento.buscarVoo(voo, daoassento);
+                                    assaux.setPassageiro(p);
+
+                                    Ticket tnew = new Ticket();
+                                    tnew.setVoo(voo);
+                                    tnew.setPassageiro(p);
+                                    tnew.setValor(100);
+                                    daoticket.inserir(tnew);
+
+                                    voo.setEstado("Executado");
+
+                                    valorTotal = valorTotal + tnew.getValor();
+                                }
+
+                            }
+                        }
+
+                    }
+                }
             }
-            
 
         }
-        
+
         daoticket.mostra();
-        
-        
+
         return valorTotal;
 
     }

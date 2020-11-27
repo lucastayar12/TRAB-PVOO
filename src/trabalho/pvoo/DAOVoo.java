@@ -41,8 +41,20 @@ public class DAOVoo {
         v2.setDuracao(12600);
         v2.setCompanhia(daocompanhiaa.buscaPorId(2));
         v2.setCapacidade(2);
+        
+        Assento ass3 = new Assento();
+        ass3.setVoo(v2);
+        ass3.setCodAssento("001");
+        daoassento.inserir(ass3);
+        
+        Assento lucasegatao = new Assento();
+        lucasegatao.setVoo(v2);
+        lucasegatao.setCodAssento("002");
+        daoassento.inserir(lucasegatao);
+        
         v2.setAviao("BOING 123");
         this.inserir(v2);
+        
 
         Voo v3 = new Voo();
         v3.setOrigem(daoaeroporto.buscaPorId(2));//SÃO PAULO 
@@ -51,6 +63,18 @@ public class DAOVoo {
         v3.setDuracao(10600);
         v3.setCompanhia(daocompanhiaa.buscaPorId(3));
         v3.setCapacidade(2);
+        
+        Assento ass4 = new Assento();
+        ass4.setVoo(v3);
+        ass4.setCodAssento("001");
+        daoassento.inserir(ass4);
+         
+        Assento p2 = new Assento();
+        p2.setVoo(v3);
+        p2.setCodAssento("002");
+        daoassento.inserir(p2);
+        
+        
         v3.setAviao("BOING 568");
         this.inserir(v3);
 
@@ -61,6 +85,19 @@ public class DAOVoo {
         v4.setDuracao(7500);
         v4.setCompanhia(daocompanhiaa.buscaPorId(1));
         v4.setCapacidade(2);
+        
+        Assento ass5 = new Assento();
+        ass5.setVoo(v4);
+        ass5.setCodAssento("001");
+        daoassento.inserir(ass5);
+        
+        Assento p3 = new Assento();
+        p3.setVoo(v4);
+        p3.setCodAssento("002");
+        daoassento.inserir(p3);
+        
+        
+        
         v4.setAviao("BOING 974");
         this.inserir(v4);
 
@@ -71,6 +108,17 @@ public class DAOVoo {
         v7.setDuracao(7500);
         v7.setCompanhia(daocompanhiaa.buscaPorId(1));
         v7.setCapacidade(2);
+        
+        Assento ass6 = new Assento();
+        ass6.setVoo(v7);
+        ass6.setCodAssento("001");
+        daoassento.inserir(ass6);
+        
+        Assento p4 = new Assento();
+        p4.setVoo(v7);
+        p4.setCodAssento("002");
+        daoassento.inserir(p4);
+        
         v7.setAviao("BOING 322");
         this.inserir(v7);
 
@@ -81,6 +129,17 @@ public class DAOVoo {
         v5.setDuracao(8000);
         v5.setCompanhia(daocompanhiaa.buscaPorId(3));
         v5.setCapacidade(2);
+        
+        Assento p5 = new Assento();
+        p5.setVoo(v5);
+        p5.setCodAssento("001");
+        daoassento.inserir(p5);
+        
+        Assento p6 = new Assento();
+        p6.setVoo(v5);
+        p6.setCodAssento("002");
+        daoassento.inserir(p6);
+        
         v5.setAviao("BOING 971");
         this.inserir(v5);
 
@@ -91,6 +150,17 @@ public class DAOVoo {
         v6.setDuracao(1500);
         v6.setCompanhia(daocompanhiaa.buscaPorId(2));
         v6.setCapacidade(2);
+        
+        Assento p7 = new Assento();
+        p7.setVoo(v6);
+        p7.setCodAssento("001");
+        daoassento.inserir(p7);
+        
+        Assento p8 = new Assento();
+        p8.setVoo(v6);
+        p8.setCodAssento("002");
+        daoassento.inserir(p8);
+        
         v6.setAviao("BOING 111");
         this.inserir(v6);
 

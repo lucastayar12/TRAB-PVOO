@@ -72,7 +72,7 @@ public class TestDijkstraAlgorithm1 {
             cont++;
             System.out.println(vertex);
 
-            if (cont >= 2 && cont % 2 == 0) {
+            if (cont >= 2) {
                 for (int i = 1; i < 8; i++) {
                     if (path.get(cont - 2).getName().equals(daovoo.buscaPorId(i).getOrigem().getCidade())) {
                         for (int j = 1; j < 8; j++) {

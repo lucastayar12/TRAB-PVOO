@@ -73,9 +73,9 @@ public class TestDijkstraAlgorithm1 {
             System.out.println(vertex);
 
             if (cont >= 2) {
-                for (int i = 1; i < 8; i++) {
+                for (int i = 1; i < 9; i++) {
                     if (path.get(cont - 2).getName().equals(daovoo.buscaPorId(i).getOrigem().getCidade())) {
-                        for (int j = 1; j < 8; j++) {
+                        for (int j = 1; j < 9; j++) {
                             if (vertex.getName().equals(daovoo.buscaPorId(j).getDestino().getCidade())) {
                                 if (i == j) {
                                     Voo voo = daovoo.buscaPorId(i);

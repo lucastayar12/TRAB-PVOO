@@ -3,6 +3,8 @@ package trabalho.pvoo;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Scanner;
+import trabalho.pvoo.GUI;
+import trabalho.pvoo.Passageiro;
 
 public class DAOPassageiro {
 

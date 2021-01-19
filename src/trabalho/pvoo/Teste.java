@@ -218,7 +218,7 @@ public class Teste {
                                     System.out.println("Assento foi inserido. ");
                                 } else {
 
-                                    System.out.println("Assento nao foi criado. ");
+                                    System.out.println("Assento não foi criado. ");
                                 }
                                 break;
 
@@ -231,7 +231,6 @@ public class Teste {
                                 System.out.print("Digite o ID do assento que deseja alterar: ");
                                 id = Integer.parseInt(scanner.nextLine());
                                 daoassento.altera(id, daovoo, daopassageiro);
-
                                 break;
 
                             case 4:
@@ -269,6 +268,10 @@ public class Teste {
 
                     System.out.println("\nO valor total da viagem é de R$ " + total + "\n");
 
+                    break;
+                    
+                case 7:
+                    System.out.println("Saindo...");
                     break;
 
                 default:

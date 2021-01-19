@@ -1,5 +1,7 @@
 package trabalho.pvoo;
 
+import trabalho.pvoo.Ticket;
+
 public class DAOTicket {
     
     private Ticket [] tks = new Ticket[10];

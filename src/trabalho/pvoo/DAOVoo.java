@@ -3,6 +3,9 @@ package trabalho.pvoo;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Scanner;
+import trabalho.pvoo.Assento;
+import trabalho.pvoo.GUI;
+import trabalho.pvoo.Voo;
 
 public class DAOVoo {
 
@@ -163,6 +166,27 @@ public class DAOVoo {
         
         v6.setAviao("BOING 111");
         this.inserir(v6);
+        
+        Voo v8 = new Voo();
+        v8.setOrigem(daoaeroporto.buscaPorId(5));//LONDRES
+        v8.setDestino(daoaeroporto.buscaPorId(4));//PARIS
+        v8.setData(LocalDate.of(2021, Month.JULY, 28));
+        v8.setDuracao(1500);
+        v8.setCompanhia(daocompanhiaa.buscaPorId(2));
+        v8.setCapacidade(2);
+        
+        Assento p9 = new Assento();
+        p9.setVoo(v8);
+        p9.setCodAssento("001");
+        daoassento.inserir(p9);
+        
+        Assento p10 = new Assento();
+        p10.setVoo(v8);
+        p10.setCodAssento("002");
+        daoassento.inserir(p10);
+        
+        v8.setAviao("TURBO X REMLAMPAGO MARQUIWS");
+        this.inserir(v8);
 
     }
 

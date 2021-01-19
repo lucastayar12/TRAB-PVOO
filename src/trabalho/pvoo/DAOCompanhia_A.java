@@ -2,6 +2,8 @@ package trabalho.pvoo;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import trabalho.pvoo.Companhia_A;
+import trabalho.pvoo.GUI;
 
 public class DAOCompanhia_A {
 

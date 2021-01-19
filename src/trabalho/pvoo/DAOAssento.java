@@ -2,6 +2,9 @@ package trabalho.pvoo;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import trabalho.pvoo.Assento;
+import trabalho.pvoo.GUI;
+import trabalho.pvoo.Voo;
 
 public class DAOAssento {
 

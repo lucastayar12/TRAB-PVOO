@@ -2,6 +2,8 @@ package trabalho.pvoo;
 
 import java.time.LocalDate;
 import java.util.Scanner;
+import trabalho.pvoo.Aeroporto;
+import trabalho.pvoo.GUI;
 
 public class DAOAeroporto {
 

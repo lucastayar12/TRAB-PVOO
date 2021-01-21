@@ -13,12 +13,11 @@ public class Aeroporto {
     private String cidade;
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
-    private static int serial;
+   
 
     Aeroporto() {
         dataCriacao = LocalDate.now();
         dataModificacao = LocalDate.now();
-        this.id = ++this.serial;
     }
 
     public int getId() {
@@ -61,9 +60,7 @@ public class Aeroporto {
         this.dataModificacao = dataModificacao;
     }
 
-    public static long getSerial() {
-        return serial;
-    }
+    
 
     @Override
     public int hashCode() {

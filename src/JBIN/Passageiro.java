@@ -12,7 +12,7 @@ public class Passageiro {
     private String documento;
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
-    private String senha;
+    private char[] senha;
    
 
     public Passageiro() {
@@ -32,11 +32,11 @@ public class Passageiro {
         this.dataCriacao = dataCriacao;
     }
 
-    public String getSenha() {
+    public char[] getSenha() {
         return senha;
     }
 
-    public void setSenha(String senha) {
+    public void setSenha(char[] senha) {
         this.senha = senha;
     }
 

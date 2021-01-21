@@ -15,7 +15,7 @@ import java.util.List;
  *
  * @author Lucas
  */
-public class PassageiroDAO extends javax.swing.JFrame {
+public class PassageiroCRUD extends javax.swing.JFrame {
 
     TableModelPassageiro tableModelPassageiro;
     DAOPassageiro daoPassageiro = new DAOPassageiro();
@@ -23,7 +23,7 @@ public class PassageiroDAO extends javax.swing.JFrame {
     /**
      * Creates new form PassageiroDAO
      */
-    public PassageiroDAO() {
+    public PassageiroCRUD() {
         initComponents();
         this.tableModelPassageiro = new TableModelPassageiro();
         this.jTable1.setModel(tableModelPassageiro);
@@ -51,17 +51,18 @@ public class PassageiroDAO extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         cpf = new javax.swing.JTextField();
-        senha = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         salvar = new javax.swing.JButton();
         limpa = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        alterar = new javax.swing.JButton();
+        javax.swing.JButton excluir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        senha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Passageiro CRUD");
+        setLocationByPlatform(true);
 
         nome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -90,13 +91,6 @@ public class PassageiroDAO extends javax.swing.JFrame {
         jLabel4.setLabelFor(cpf);
         jLabel4.setText("CPF:");
 
-        senha.setToolTipText("");
-        senha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                senhaActionPerformed(evt);
-            }
-        });
-
         jLabel5.setLabelFor(senha);
         jLabel5.setText("Senha:");
 
@@ -114,12 +108,17 @@ public class PassageiroDAO extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Alterar");
-
-        jButton2.setText("Excluir");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        alterar.setText("Alterar");
+        alterar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                alterarMouseClicked(evt);
+            }
+        });
+
+        excluir.setText("Excluir");
+        excluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                excluirMouseClicked(evt);
             }
         });
 
@@ -141,18 +140,30 @@ public class PassageiroDAO extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
+        senha.setToolTipText("");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(limpa, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81))
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 690, Short.MAX_VALUE))
+                        .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -162,7 +173,7 @@ public class PassageiroDAO extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(nome))
+                            .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
@@ -172,17 +183,6 @@ public class PassageiroDAO extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(cpf, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(limpa, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(81, 81, 81))
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -193,10 +193,13 @@ public class PassageiroDAO extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cod))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(nome))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -212,8 +215,8 @@ public class PassageiroDAO extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(limpa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -233,12 +236,13 @@ public class PassageiroDAO extends javax.swing.JFrame {
         p.setDocumento(cpf.getText());
         p.setNome(nome.getText());
         p.setNascimento(LocalDate.parse(dat_Nasc.getText()));
-        p.setSenha(senha.getText());
-        daoPassageiro.adiciona(p);
+        p.setSenha(senha.getPassword());
+        int id = daoPassageiro.adiciona(p);
         List<Passageiro> passageiros = daoPassageiro.lista();
+
         for (Passageiro ps : passageiros) {
-            if (p.getDocumento().equals(ps.getDocumento())) {
-                this.tableModelPassageiro.add(p);
+            if (id == ps.getId()) {
+                this.tableModelPassageiro.add(ps);
             }
         }
     }//GEN-LAST:event_salvarMouseClicked
@@ -246,10 +250,6 @@ public class PassageiroDAO extends javax.swing.JFrame {
     private void dat_NascActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dat_NascActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dat_NascActionPerformed
-
-    private void senhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_senhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_senhaActionPerformed
 
     private void limpaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limpaMouseClicked
         // TODO add your handling code here
@@ -264,30 +264,47 @@ public class PassageiroDAO extends javax.swing.JFrame {
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
+
         int linha = this.jTable1.getSelectedRow();
         Passageiro pTemp = this.tableModelPassageiro.get(linha);
-        this.cod.setText(pTemp.getId().toString());
+        this.cod.setText(String.valueOf(pTemp.getId()));
         this.nome.setText(pTemp.getNome());
         this.cpf.setText(pTemp.getDocumento());
         this.dat_Nasc.setText(pTemp.getNascimento().toString());
-        this.senha.setText(pTemp.getSenha());
+        String passText = new String(pTemp.getSenha());
+        this.senha.setText(passText);
     }//GEN-LAST:event_jTable1MouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void excluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excluirMouseClicked
         // TODO add your handling code here:
         Passageiro p = new Passageiro();
-        p.setDocumento(cpf.getText());
-        p.setNome(nome.getText());
-        p.setNascimento(LocalDate.parse(dat_Nasc.getText()));
-        p.setSenha(senha.getText());
-        p.setId(Long.getLong(cod.getText()));
+        p.setId(Long.parseLong(cod.getText()));
         daoPassageiro.exclui(p);
         for (int i = 0; i < tableModelPassageiro.getRowCount(); i++) {
             if (tableModelPassageiro.get(i).getId() == p.getId()) {
                 tableModelPassageiro.remove(i);
             }
         }
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_excluirMouseClicked
+
+    private void alterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alterarMouseClicked
+        // TODO add your handling code here:
+        Passageiro p = new Passageiro();
+        p.setId(Long.valueOf(cod.getText()));
+        p.setDocumento(cpf.getText());
+        p.setNome(nome.getText());
+        p.setNascimento(LocalDate.parse(dat_Nasc.getText()));
+        p.setSenha(senha.getPassword());
+        Long id = daoPassageiro.altera(p);
+        
+        List<Passageiro> passageiros = daoPassageiro.lista();
+        for (Passageiro ps : passageiros) {
+            if (id == ps.getId()) {
+                this.tableModelPassageiro.edita(ps);
+            }
+        }
+
+    }//GEN-LAST:event_alterarMouseClicked
 
     /**
      * @param args the command line arguments
@@ -306,30 +323,30 @@ public class PassageiroDAO extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PassageiroDAO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PassageiroCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PassageiroDAO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PassageiroCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PassageiroDAO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PassageiroCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PassageiroDAO.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PassageiroCRUD.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PassageiroDAO().setVisible(true);
+                new PassageiroCRUD().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton alterar;
     private javax.swing.JTextField cod;
     private javax.swing.JTextField cpf;
     private javax.swing.JFormattedTextField dat_Nasc;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -340,6 +357,6 @@ public class PassageiroDAO extends javax.swing.JFrame {
     private javax.swing.JButton limpa;
     private javax.swing.JTextField nome;
     private javax.swing.JButton salvar;
-    private javax.swing.JTextField senha;
+    private javax.swing.JPasswordField senha;
     // End of variables declaration//GEN-END:variables
 }

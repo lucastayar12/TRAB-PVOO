@@ -44,13 +44,12 @@ public class TableModelPassageiro extends AbstractTableModel {
         int position = 0;
         for (int i = 0; i < passageiros.size(); i++) {
             Passageiro get = passageiros.get(i);
-            if (get.getDocumento().equals(p.getDocumento())) {
+            if (get.getId() == p.getId()) {
                 position = i;
                 break;
             }
         }
         this.passageiros.set(position, p);
-
         fireTableDataChanged();
     }
 

@@ -50,7 +50,7 @@ public class TestDijkstraAlgorithm1 {
 
     }
 
-    public double Executa2(int id, int id2, DAOVoo daovoo, Passageiro p, DAOAssento daoassento) {
+    /*public double Executa2(int id, int id2, DAOVoo daovoo, Passageiro p, DAOAssento daoassento) {
 
         CidadesDistancia c1 = new CidadesDistancia("UBERABA", "SAO PAULO", 500);
 
@@ -74,7 +74,7 @@ public class TestDijkstraAlgorithm1 {
             cont++;
             System.out.println(vertex);
 
-            if (cont >= 2) {
+             if (cont >= 2) {
                 for (int i = 1; i < 9; i++) {
                     if (path.get(cont - 2).getName().equals(daovoo.buscaPorId(i).getOrigem().getCidade())) {
                         for (int j = 1; j < 9; j++) {
@@ -107,11 +107,12 @@ public class TestDijkstraAlgorithm1 {
         }
 
         daoticket.mostra();
+            
+            return valorTotal;
 
-        return valorTotal;
-
-    }
-
+        }
+*/
+    
     private Graph createGraph() {
         nodes = new ArrayList<Vertex>();
         edges = new ArrayList<Edge>();

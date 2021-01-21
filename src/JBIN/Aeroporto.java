@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Aeroporto {
 
-    private int id;
+    private Long id;
     private String nome;
     private String abreviacao;
     private String cidade;
@@ -15,12 +15,16 @@ public class Aeroporto {
     private LocalDate dataModificacao;
    
 
-    Aeroporto() {
+   public Aeroporto() {
         dataCriacao = LocalDate.now();
         dataModificacao = LocalDate.now();
     }
 
-    public int getId() {
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -94,6 +98,10 @@ public class Aeroporto {
     @Override
     public String toString() {
         return "\nAeroporto\n" + "ID= " + id + ", Nome= " + nome + "\nAbreviação= " + abreviacao + " Cidade= " + cidade + "\nData da Criação= " + dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\nData de Modificação= " + dataModificacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '\n';
+    }
+
+    public void setId(Long id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

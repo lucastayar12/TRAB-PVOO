@@ -31,15 +31,15 @@ public class TestDijkstraAlgorithm1 {
         Aeroporto origem = voo.getOrigem();
         Aeroporto destino = voo.getDestino();
 
-        int ido = origem.getId() - 1;
-        int idd = destino.getId() - 1;
-
+        //int ido = origem.getId() - 1;
+        //int idd = destino.getId() - 1;
+        int i = 1;
         Graph graph = this.createGraph();
         DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
         //source
-        dijkstra.execute(nodes.get(ido));
+        dijkstra.execute(nodes.get(i));
         //destination
-        LinkedList<Vertex> path = dijkstra.getPath(nodes.get(idd));
+        LinkedList<Vertex> path = dijkstra.getPath(nodes.get(i));
 
         //Total distance
         int totalDistance = 0;

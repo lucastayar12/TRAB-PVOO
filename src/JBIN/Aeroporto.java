@@ -13,13 +13,15 @@ public class Aeroporto {
     private String cidade;
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
+
+    
    
 
    public Aeroporto() {
         dataCriacao = LocalDate.now();
         dataModificacao = LocalDate.now();
     }
-
+   
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
     }
@@ -27,7 +29,11 @@ public class Aeroporto {
     public Long getId() {
         return id;
     }
-
+    
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
     public String getNome() {
         return nome;
     }
@@ -99,9 +105,4 @@ public class Aeroporto {
     public String toString() {
         return "\nAeroporto\n" + "ID= " + id + ", Nome= " + nome + "\nAbreviação= " + abreviacao + " Cidade= " + cidade + "\nData da Criação= " + dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\nData de Modificação= " + dataModificacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '\n';
     }
-
-    public void setId(Long id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
 }

@@ -16,7 +16,7 @@ public class DAOAeroporto {
     
     public int adiciona(Aeroporto aero) {
         String sql = "insert into aeroporto "
-                + "(nome,abreviacao,cidade,dat_Criacao,dat_Modificacao)" + " values (?,?,?,?,?)";
+                + "(nome,abreviacao,cidade,dat_Criacao,dat_Mod)" + " values (?,?,?,?,?)";
 
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {

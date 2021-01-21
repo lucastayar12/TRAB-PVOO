@@ -5,7 +5,10 @@
  */
 package GUI;
 
+import DAOS.DAOAeroporto;
+import JBIN.Aeroporto;
 import TMS.TableModelAeroporto;
+import java.util.List;
 
 /**
  *
@@ -14,6 +17,7 @@ import TMS.TableModelAeroporto;
 public class AeroportoCRUD extends javax.swing.JFrame {
 
     TableModelAeroporto tableModelAeroporto;
+    DAOAeroporto daoAeroporto = new DAOAeroporto();
 
     /**
      * Creates new form AeoroportoDao
@@ -23,6 +27,10 @@ public class AeroportoCRUD extends javax.swing.JFrame {
         this.tableModelAeroporto = new TableModelAeroporto();
         this.jTable1.setModel(tableModelAeroporto);
         
+        List<Aeroporto> passageiros = daoAeroporto.lista();
+        for (Aeroporto p : passageiros) {
+            this.tableModelAeroporto.add(p);
+        }
     }
 
     /**
@@ -49,7 +57,7 @@ public class AeroportoCRUD extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Aeroporto CRUD");
         setPreferredSize(new java.awt.Dimension(885, 705));
 
@@ -76,12 +84,32 @@ public class AeroportoCRUD extends javax.swing.JFrame {
         });
 
         limpar.setText("Limpar");
+        limpar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                limparMouseClicked(evt);
+            }
+        });
 
         excluir.setText("Excluir");
+        excluir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                excluirMouseClicked(evt);
+            }
+        });
 
         alterar.setText("Alterar");
+        alterar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                alterarMouseClicked(evt);
+            }
+        });
 
         salvar.setText("Salvar");
+        salvar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                salvarMouseClicked(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -94,6 +122,11 @@ public class AeroportoCRUD extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,6 +208,72 @@ public class AeroportoCRUD extends javax.swing.JFrame {
     private void cidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cidadeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cidadeActionPerformed
+
+    private void limparMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_limparMouseClicked
+        // TODO add your handling code here:
+        nome.setText("");
+        abrev.setText("");
+        cidade.setText("");
+        cod.setText("");
+      
+    }//GEN-LAST:event_limparMouseClicked
+
+    private void salvarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_salvarMouseClicked
+        // TODO add your handling code here:
+        Aeroporto ar = new Aeroporto();
+        ar.setNome(nome.getText());
+        ar.setCidade(cidade.getText());
+        ar.setAbreviacao(abrev.getText());
+        int id = daoAeroporto.adiciona(ar);
+        
+        List<Aeroporto> passageiros = daoAeroporto.lista();
+        for (Aeroporto ars : passageiros) {
+            if (id == ars.getId()) {
+                this.tableModelAeroporto.add(ars);
+            }
+        }
+    }//GEN-LAST:event_salvarMouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int linha = this.jTable1.getSelectedRow();
+        Aeroporto arTemp = this.tableModelAeroporto.get(linha);
+        this.cod.setText(String.valueOf(arTemp.getId()));
+        this.nome.setText(arTemp.getNome());
+        this.cidade.setText(arTemp.getCidade());
+        this.abrev.setText(arTemp.getAbreviacao());
+        
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void excluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excluirMouseClicked
+        // TODO add your handling code here:
+        Aeroporto ar = new Aeroporto();
+        ar.setId(Long.parseLong(cod.getText()));
+        daoAeroporto.exclui(ar);
+        for (int i = 0; i < tableModelAeroporto.getRowCount(); i++) {
+            if (tableModelAeroporto.get(i).getId() == ar.getId()) {
+                tableModelAeroporto.remove(i);
+            }
+        }
+    }//GEN-LAST:event_excluirMouseClicked
+
+    private void alterarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alterarMouseClicked
+        // TODO add your handling code here:
+        Aeroporto ar = new Aeroporto();
+        ar.setId(Long.valueOf(cod.getText()));
+        ar.setAbreviacao(abrev.getText());
+        ar.setNome(nome.getText());
+        ar.setCidade(cidade.getText());
+        
+        Long id = daoAeroporto.altera(ar);
+        
+        List<Aeroporto> passageiros = daoAeroporto.lista();
+        for (Aeroporto ars : passageiros) {
+            if (id == ars.getId()) {
+                this.tableModelAeroporto.edita(ars);
+            }
+        }
+    }//GEN-LAST:event_alterarMouseClicked
 
     /**
      * @param args the command line arguments

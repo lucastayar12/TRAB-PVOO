@@ -12,12 +12,10 @@ public class Companhia_A {
     private String abreviacao;
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
-    private static long serial;
 
     public Companhia_A() {
         this.dataCriacao = LocalDate.now();
         this.dataModificacao = LocalDate.now();
-        this.id = ++this.serial;
     }
 
     public long getId() {
@@ -48,12 +46,17 @@ public class Companhia_A {
         return dataModificacao;
     }
 
-    public void setDataModificacao(LocalDate dataModificacao) {
-        this.dataModificacao = dataModificacao;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public static long getSerial() {
-        return serial;
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    
+    public void setDataModificacao(LocalDate dataModificacao) {
+        this.dataModificacao = dataModificacao;
     }
 
     @Override
@@ -88,6 +91,12 @@ public class Companhia_A {
     @Override
     public String toString() {
         return "\nCompanhia Aéria\n" + "ID= " + id + ", Nome= " + nome + " Abreviacao= " + abreviacao + "\nData de criação= " + dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + " Data de modificação= " + dataModificacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '\n';
+    }
+
+    public static class Size extends Exception {
+
+        public Size() {
+        }
     }
 
 }

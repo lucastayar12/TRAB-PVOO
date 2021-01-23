@@ -5,12 +5,16 @@ import java.sql.SQLException;
 import JDBC.ConnectionFactory;
 import java.sql.Connection;
 import JBIN.Passageiro;
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class DAOPassageiro {
 
@@ -20,7 +24,8 @@ public class DAOPassageiro {
 
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            String passText = new String(p.getSenha());
+            String passText = p.getSenha();
+            passText = criptografa(passText);
             stmt.setString(1, p.getNome());
             stmt.setDate(2, java.sql.Date.valueOf(p.getNascimento()));
             stmt.setString(3, p.getDocumento());
@@ -67,19 +72,12 @@ public class DAOPassageiro {
                 LocalDate modifica = mod.toLocalDate();
                 LocalDate dat_Nasc = sqlDate.toLocalDate();
 
-                char[] senhac = new char[senha.length()];
-
-                // Copy character by character into array 
-                for (int i = 0; i < senha.length(); i++) {
-                    senhac[i] = senha.charAt(i);
-                }
-
                 Passageiro p = new Passageiro();
                 p.setId(id);
                 p.setNome(nome);
                 p.setDocumento(documento);
                 p.setNascimento(dat_Nasc);
-                p.setSenha(senhac);
+                p.setSenha(senha);
                 p.setDataModificacao(criacao);
                 p.setDataCriacao(modifica);
 
@@ -119,7 +117,6 @@ public class DAOPassageiro {
             stmt.setString(3, elemento.getDocumento());
             stmt.setDate(4, java.sql.Date.valueOf(elemento.getDataModificacao()));
             stmt.setString(5, passText);
-            System.out.println(elemento.getId());
             stmt.setLong(6, elemento.getId());
 
             stmt.execute();
@@ -131,5 +128,23 @@ public class DAOPassageiro {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    
+    private String criptografa(String original) {
+        String senha = null;
+        try {
+            MessageDigest algorithm = MessageDigest.getInstance("SHA-256");
+            byte messageDigest[] = algorithm.digest(original.getBytes("UTF-8"));
+
+            StringBuilder hexString = new StringBuilder();
+            for (byte b : messageDigest) {
+                hexString.append(String.format("%02X", 0xFF & b));
+            }
+             senha = hexString.toString();
+            
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+           JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+        }
+        return senha;
     }
 }

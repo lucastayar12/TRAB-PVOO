@@ -6,26 +6,30 @@ import java.util.Objects;
 
 public class Assento {
     
-    private long id;
+    private Long id;
     private Voo voo;
     private String codAssento;
     private Passageiro passageiro;
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
-    private static long serial;
+   
     
     Assento(){
         dataCriacao = LocalDate.now();
         dataModificacao = LocalDate.now();
-        this.id = ++this.serial;
     }
 
-    public long getId() {
+   
+    public Voo getVoo() {
+        return voo;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public Voo getVoo() {
-        return voo;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setVoo(Voo voo) {
@@ -58,10 +62,6 @@ public class Assento {
 
     public void setDataModificacao(LocalDate dataModificacao) {
         this.dataModificacao = dataModificacao;
-    }
-
-    public static long getSerial() {
-        return serial;
     }
 
     @Override

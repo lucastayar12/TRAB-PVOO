@@ -94,6 +94,7 @@ public class DAOAeroporto {
             throw new RuntimeException(e);
         }
     }
+    
     public Long altera(Aeroporto elemento) {
         String sql = "update aeroporto set nome = ?, cidade = ?,abreviacao = ?, dat_Mod = ? where id = ?";
 

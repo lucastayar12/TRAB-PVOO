@@ -236,7 +236,7 @@ public class PassageiroCRUD extends javax.swing.JFrame {
         p.setDocumento(cpf.getText());
         p.setNome(nome.getText());
         p.setNascimento(LocalDate.parse(dat_Nasc.getText()));
-        p.setSenha(senha.getPassword());
+        p.setSenha( new String(senha.getPassword()));
         int id = daoPassageiro.adiciona(p);
         List<Passageiro> passageiros = daoPassageiro.lista();
 
@@ -294,7 +294,7 @@ public class PassageiroCRUD extends javax.swing.JFrame {
         p.setDocumento(cpf.getText());
         p.setNome(nome.getText());
         p.setNascimento(LocalDate.parse(dat_Nasc.getText()));
-        p.setSenha(senha.getPassword());
+        p.setSenha(new String(senha.getPassword()));
         Long id = daoPassageiro.altera(p);
         
         List<Passageiro> passageiros = daoPassageiro.lista();

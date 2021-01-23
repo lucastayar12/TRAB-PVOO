@@ -16,8 +16,8 @@ import java.util.List;
 public class DAOCompanhia_A {
     
     public int adiciona(Companhia_A co) {
-        String sql = "insert into companhia "
-                + "(nome,abreviacao,dat_Criacao,dat_Modificacao)" + " values (?,?,?,?)";
+        String sql = "insert into comp_area "
+                + "(nome,abreviacao,dat_Criacao,dat_Mod)" + " values (?,?,?,?)";
 
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
@@ -45,7 +45,7 @@ public class DAOCompanhia_A {
     }
 
     public List<Companhia_A> lista() {
-        String sql = "select * from aeroporto";
+        String sql = "select * from comp_area";
         List<Companhia_A> companhias = new ArrayList<>();
 
         try (Connection connection = new ConnectionFactory().getConnection();
@@ -62,7 +62,6 @@ public class DAOCompanhia_A {
                 LocalDate criacao = cria.toLocalDate();
                 LocalDate modifica = mod.toLocalDate();
 
-
                 Companhia_A co = new Companhia_A();
                 co.setId(id);
                 co.setNome(nome);
@@ -78,7 +77,7 @@ public class DAOCompanhia_A {
                        return companhias;
                  }
     public void exclui(Companhia_A elemento) {
-        String sql = "delete from companhia where id = ?";
+        String sql = "delete from comp_area where id = ?";
 
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -94,7 +93,7 @@ public class DAOCompanhia_A {
     }
     
     public Long altera(Companhia_A elemento) {
-        String sql = "update companhia set nome = ?,abreviacao = ?, dat_Mod = ? where id = ?";
+        String sql = "update comp_area set nome = ?,abreviacao = ?, dat_Mod = ? where id = ?";
 
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {

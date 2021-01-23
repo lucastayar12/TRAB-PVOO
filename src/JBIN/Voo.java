@@ -7,29 +7,36 @@ import java.util.Objects;
 
 public class Voo {
 
-    private long id;
+    private Long id;
     private Aeroporto origem;
     private Aeroporto destino;
     private LocalDate data;
     private int duracao;
     private Companhia_A companhia;
-    private long capacidade;
+    private Long capacidade;
     private String aviao;
     private String estado = "Planejado";
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
-    private static long serial;
 
-    Voo() {
+
+    public Voo() {
         dataCriacao = LocalDate.now();
         dataModificacao = LocalDate.now();
-        this.id = ++this.serial;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+    
     public Aeroporto getOrigem() {
         return origem;
     }
@@ -70,11 +77,11 @@ public class Voo {
         this.companhia = companhia;
     }
 
-    public long getCapacidade() {
+    public Long getCapacidade() {
         return capacidade;
     }
 
-    public void setCapacidade(long capacidade) {
+    public void setCapacidade(Long capacidade) {
         this.capacidade = capacidade;
     }
     
@@ -104,10 +111,6 @@ public class Voo {
 
     public void setDataModificacao(LocalDate dataModificacao) {
         this.dataModificacao = dataModificacao;
-    }
-
-    public static long getSerial() {
-        return serial;
     }
 
     @Override

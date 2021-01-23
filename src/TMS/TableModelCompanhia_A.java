@@ -22,11 +22,12 @@ public class TableModelCompanhia_A extends AbstractTableModel {
     public TableModelCompanhia_A() {
         this.companhiaas = new ArrayList<>();
     }
-    
-     public Companhia_A get(int rowIndex) {
+
+    public Companhia_A get(int rowIndex) {
         return this.companhiaas.get(rowIndex);
     }
-     /**
+
+    /**
      * Adiciona uma cidade a tabela (cria uma linha)
      *
      * @param co
@@ -35,11 +36,12 @@ public class TableModelCompanhia_A extends AbstractTableModel {
         this.companhiaas.add(co);
         fireTableDataChanged();
     }
-     
-     /**
+
+    /**
      * Edita uma cidade a tabela (cria uma linha)
      *
-     * @param co */
+     * @param co
+     */
     public void edita(Companhia_A co) {
         int position = 0;
         for (int i = 0; i < companhiaas.size(); i++) {
@@ -52,13 +54,12 @@ public class TableModelCompanhia_A extends AbstractTableModel {
         this.companhiaas.set(position, co);
         fireTableDataChanged();
     }
-     
-     
+
     public void remove(int rowIndex) {
         this.companhiaas.remove(rowIndex);
         fireTableDataChanged();
     }
-   
+
     @Override
     public int getRowCount() {
         return this.companhiaas.size();
@@ -71,7 +72,7 @@ public class TableModelCompanhia_A extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-       switch (columnIndex) {
+        switch (columnIndex) {
 
             case 0:
                 return this.companhiaas.get(rowIndex).getId();
@@ -82,7 +83,6 @@ public class TableModelCompanhia_A extends AbstractTableModel {
             case 2:
                 return this.companhiaas.get(rowIndex).getAbreviacao();
 
-            
             default:
                 return this.companhiaas.get(rowIndex);
         }
@@ -92,5 +92,5 @@ public class TableModelCompanhia_A extends AbstractTableModel {
     public String getColumnName(int columnIndex) {
         return this.colunas[columnIndex];
     }
-    
+
 }

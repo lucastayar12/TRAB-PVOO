@@ -27,9 +27,9 @@ public class AeroportoCRUD extends javax.swing.JFrame {
         this.tableModelAeroporto = new TableModelAeroporto();
         this.jTable1.setModel(tableModelAeroporto);
         
-        List<Aeroporto> passageiros = daoAeroporto.lista();
-        for (Aeroporto p : passageiros) {
-            this.tableModelAeroporto.add(p);
+        List<Aeroporto> ars = daoAeroporto.lista();
+        for (Aeroporto ar : ars) {
+            this.tableModelAeroporto.add(ar);
         }
     }
 
@@ -195,7 +195,7 @@ public class AeroportoCRUD extends javax.swing.JFrame {
                             .addComponent(alterar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(33, 33, 33)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
 
         pack();

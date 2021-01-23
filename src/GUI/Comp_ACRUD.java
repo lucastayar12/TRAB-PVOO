@@ -23,6 +23,7 @@ public class Comp_ACRUD extends javax.swing.JFrame {
      */
     public Comp_ACRUD() {
         initComponents();
+        setLocationRelativeTo(null);
         this.tableModelCompanhia_A = new TableModelCompanhia_A();
         this.jTable1.setModel(tableModelCompanhia_A);
         

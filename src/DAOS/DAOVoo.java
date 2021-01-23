@@ -135,4 +135,32 @@ public class DAOVoo {
             throw new RuntimeException(e);
         }
     }
+    
+    public Long altera(Voo elemento) {
+        String sql = "update voo set origem = ?, destino = ?, data = ?, duracao= ?, comp_area = ?, capacidade = ?, aviao = ?, estado = ?, dat_Mod = ? where id = ?";
+
+        try (Connection connection = new ConnectionFactory().getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setLong(1, elemento.getOrigem().getId());
+            stmt.setLong(2, elemento.getDestino().getId());
+            stmt.setDate(3, java.sql.Date.valueOf(elemento.getData()));
+            stmt.setInt(4, elemento.getDuracao());
+            stmt.setLong(5, elemento.getCompanhia().getId());
+            stmt.setLong(6, elemento.getCapacidade());
+            stmt.setString(7, elemento.getAviao());
+            stmt.setString(8, elemento.getEstado());
+            stmt.setDate(9, java.sql.Date.valueOf(elemento.getDataModificacao()));
+            stmt.setLong(10, elemento.getId());
+
+            stmt.execute();
+
+            Long retorno = elemento.getId();
+
+            System.out.println("Elemento alterado com sucesso.");
+            return retorno;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

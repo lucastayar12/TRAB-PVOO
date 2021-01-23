@@ -24,9 +24,21 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+              <Component id="limpa" min="-2" pref="165" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+              <Component id="altera" min="-2" pref="165" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
+              <Component id="exclui" min="-2" pref="165" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+              <Component id="salva" min="-2" pref="165" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
           <Group type="102" attributes="0">
               <EmptySpace pref="41" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jScrollPane1" min="-2" pref="1010" max="-2" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   <Component id="comboEst" min="-2" pref="110" max="-2" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
@@ -75,18 +87,6 @@
                           <Component id="aviao" min="-2" pref="130" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="limpa" min="-2" pref="165" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="altera" min="-2" pref="165" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="198" max="-2" attributes="0"/>
-                          <Component id="exclui" min="-2" pref="165" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="salva" min="-2" pref="165" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="jScrollPane1" alignment="0" min="-2" pref="1010" max="-2" attributes="0"/>
-                  </Group>
               </Group>
               <EmptySpace pref="38" max="32767" attributes="0"/>
           </Group>
@@ -128,17 +128,16 @@
               <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="comboEst" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                      <Component id="exclui" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="salva" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="altera" alignment="1" min="-2" pref="45" max="-2" attributes="0"/>
-                  <Component id="limpa" alignment="1" max="32767" attributes="0"/>
+              <EmptySpace pref="76" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="altera" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="exclui" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="salva" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
+                  <Component id="limpa" alignment="3" min="-2" pref="45" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -253,6 +252,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Alterar"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="alteraMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="exclui">
       <Properties>

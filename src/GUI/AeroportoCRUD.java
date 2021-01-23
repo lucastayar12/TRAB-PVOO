@@ -24,6 +24,7 @@ public class AeroportoCRUD extends javax.swing.JFrame {
      */
     public AeroportoCRUD() {
         initComponents();
+        setLocationRelativeTo(null);
         this.tableModelAeroporto = new TableModelAeroporto();
         this.jTable1.setModel(tableModelAeroporto);
         

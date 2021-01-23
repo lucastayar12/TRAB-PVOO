@@ -34,6 +34,7 @@ public class VooCRUD extends javax.swing.JFrame {
      */
     public VooCRUD() {
         initComponents();
+        setLocationRelativeTo(null);
         this.tableModelVoo = new TableModelVoo();
         this.jTable1.setModel(tableModelVoo);
 
@@ -156,6 +157,11 @@ public class VooCRUD extends javax.swing.JFrame {
         });
 
         altera.setText("Alterar");
+        altera.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                alteraMouseClicked(evt);
+            }
+        });
 
         exclui.setText("Excluir");
         exclui.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -194,8 +200,19 @@ public class VooCRUD extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(115, 115, 115)
+                .addComponent(limpa, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45)
+                .addComponent(altera, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59)
+                .addComponent(exclui, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(salva, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1010, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(comboEst, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -232,17 +249,7 @@ public class VooCRUD extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
-                            .addComponent(aviao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(limpa, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(81, 81, 81)
-                            .addComponent(altera, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(198, 198, 198)
-                            .addComponent(exclui, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(salva, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1010, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(aviao, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -276,15 +283,15 @@ public class VooCRUD extends javax.swing.JFrame {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(comboEst, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(exclui, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(salva, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(altera, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(limpa, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(altera, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exclui, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salva, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(limpa, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -353,6 +360,12 @@ public class VooCRUD extends javax.swing.JFrame {
         cod.setText("");
         cap.setText("");
         duracao.setText("");
+        data.setText("");
+        comboComp.setSelectedIndex(0);
+        comboOrigem.setSelectedIndex(0);
+        comboDestino.setSelectedIndex(0);
+        
+        
     }//GEN-LAST:event_limpaMouseClicked
 
     private void excluiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excluiMouseClicked
@@ -398,6 +411,55 @@ public class VooCRUD extends javax.swing.JFrame {
         this.comboEst.setSelectedItem(voo.getEstado());
 
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void alteraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alteraMouseClicked
+        // TODO add your handling code here:
+        Voo voo = new Voo();
+        voo.setId(Long.parseLong(cod.getText()));
+        
+        String origem = (String) comboOrigem.getSelectedItem();
+        String destino = (String) comboDestino.getSelectedItem();
+        LocalDate dataF;
+
+        List<Aeroporto> ars = daoAeroporto.lista();
+        for (Aeroporto ar : ars) {
+            if (origem.equals(ar.getCidade())) {
+                voo.setOrigem(ar);
+            }
+
+            if (destino.equals(ar.getCidade())) {
+                voo.setDestino(ar);
+            }
+        }
+        
+        LocalDate dataf = LocalDate.now();
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        dataf = LocalDate.parse(data.getText(), df);
+
+        voo.setData(dataf);
+        voo.setDuracao(Integer.parseInt(duracao.getText()));
+
+        String compA = (String) comboComp.getSelectedItem();
+        List<Companhia_A> cas = daoCompanhiaA.lista();
+        for (Companhia_A ca : cas) {
+            if (compA.equals(ca.getNome())) {
+                voo.setCompanhia(ca);
+            }
+        }
+
+        voo.setCapacidade(Long.parseLong(cap.getText()));
+        voo.setAviao(aviao.getText());
+        voo.setEstado((String) comboEst.getSelectedItem());
+        Long id = daoVoo.altera(voo);
+        
+        List<Voo> voos = daoVoo.lista();
+        for (Voo voof : voos) {
+            if (id == voof.getId()) {
+                this.tableModelVoo.edita(voof);
+            }
+        }
+        
+    }//GEN-LAST:event_alteraMouseClicked
 
     /**
      * @param args the command line arguments

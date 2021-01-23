@@ -25,6 +25,7 @@ public class PassageiroCRUD extends javax.swing.JFrame {
      */
     public PassageiroCRUD() {
         initComponents();
+        setLocationRelativeTo(null);
         this.tableModelPassageiro = new TableModelPassageiro();
         this.jTable1.setModel(tableModelPassageiro);
 

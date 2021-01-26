@@ -1,6 +1,5 @@
 package JBIN;
 
-import trabalho.pvoo.*;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -14,7 +13,7 @@ public class Assento {
     private LocalDate dataModificacao;
    
     
-    Assento(){
+    public Assento(){
         dataCriacao = LocalDate.now();
         dataModificacao = LocalDate.now();
     }

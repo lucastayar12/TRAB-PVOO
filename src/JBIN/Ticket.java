@@ -1,6 +1,5 @@
 package JBIN;
 
-import trabalho.pvoo.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
@@ -41,6 +40,23 @@ public class Ticket {
         this.voo = voo;
     }
 
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setDataCriacao(LocalDate dataCriacao) {
+        this.dataCriacao = dataCriacao;
+    }
+
+    public void setDataModificacao(LocalDate dataModificacao) {
+        this.dataModificacao = dataModificacao;
+    }
+
+    public static void setSerial(long serial) {
+        Ticket.serial = serial;
+    }
+
+    
     public Passageiro getPassageiro() {
         return passageiro;
     }
@@ -97,5 +113,6 @@ public class Ticket {
     public String toString() {
         return "\nTicket\n" + "ID= " + id + " Valor= R$ " + valor + "\n----" + voo + "\n----" + passageiro + "\nData de Criação= " + dataCriacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))  + " Data de Modificação= " + dataModificacao.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + '}';
     }
+
 
 }

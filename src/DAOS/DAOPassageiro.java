@@ -8,7 +8,6 @@ import JBIN.Passageiro;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDate;
@@ -20,18 +19,16 @@ public class DAOPassageiro {
 
     public int adiciona(Passageiro p) {
         String sql = "insert into passageiro "
-                + "(nome,nascimento,cpf,dat_Criacao,dat_Mod,senha)" + " values (?,?,?,?,?,?)";
+                + "(nome,nascimento,cpf,dat_Criacao,dat_Mod)" + " values (?,?,?,?,?)";
 
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            String passText = p.getSenha();
-            passText = criptografa(passText);
+            
             stmt.setString(1, p.getNome());
             stmt.setDate(2, java.sql.Date.valueOf(p.getNascimento()));
             stmt.setString(3, p.getDocumento());
             stmt.setDate(4, java.sql.Date.valueOf(p.getDataCriacao()));
             stmt.setDate(5, java.sql.Date.valueOf(p.getDataModificacao()));
-            stmt.setString(6, passText);
 
             stmt.execute();
 
@@ -64,7 +61,6 @@ public class DAOPassageiro {
                 String nome = rs.getString("nome");
                 java.sql.Date sqlDate = rs.getDate("nascimento");
                 String documento = rs.getString("cpf");
-                String senha = rs.getString("senha");
                 java.sql.Date cria = rs.getDate("dat_Criacao");
                 java.sql.Date mod = rs.getDate("dat_Mod");
 
@@ -77,7 +73,6 @@ public class DAOPassageiro {
                 p.setNome(nome);
                 p.setDocumento(documento);
                 p.setNascimento(dat_Nasc);
-                p.setSenha(senha);
                 p.setDataModificacao(criacao);
                 p.setDataCriacao(modifica);
 
@@ -106,18 +101,16 @@ public class DAOPassageiro {
     }
 
     public Long altera(Passageiro elemento) {
-        String sql = "update passageiro set nome = ?, nascimento = ?,cpf = ?, dat_Mod = ?, senha = ?  where id = ?";
+        String sql = "update passageiro set nome = ?, nascimento = ?,cpf = ?, dat_Mod = ?  where id = ?";
 
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
 
-            String passText = new String(elemento.getSenha());
             stmt.setString(1, elemento.getNome());
             stmt.setDate(2, java.sql.Date.valueOf(elemento.getNascimento()));
             stmt.setString(3, elemento.getDocumento());
             stmt.setDate(4, java.sql.Date.valueOf(elemento.getDataModificacao()));
-            stmt.setString(5, passText);
-            stmt.setLong(6, elemento.getId());
+            stmt.setLong(5, elemento.getId());
 
             stmt.execute();
 

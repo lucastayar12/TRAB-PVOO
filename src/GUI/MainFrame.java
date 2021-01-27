@@ -35,7 +35,7 @@ public class MainFrame extends javax.swing.JFrame {
         jMenu5 = new javax.swing.JMenu();
         ticket = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(java.awt.SystemColor.activeCaption);
 
         jMenu1.setText("PASSAGEIRO");
@@ -79,6 +79,11 @@ public class MainFrame extends javax.swing.JFrame {
         jMenuBar1.add(jMenu5);
 
         ticket.setText("TICKET");
+        ticket.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ticketMouseClicked(evt);
+            }
+        });
         jMenuBar1.add(ticket);
 
         setJMenuBar(jMenuBar1);
@@ -126,6 +131,14 @@ public class MainFrame extends javax.swing.JFrame {
         AssentoCRUD janela = new AssentoCRUD();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_jMenu5MouseClicked
+
+    private void ticketMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ticketMouseClicked
+        // TODO add your handling code here:
+        TicketCRUD janela = new TicketCRUD();
+        janela.setLocationRelativeTo(null);
+        janela.setVisible(rootPaneCheckingEnabled);
+        
+    }//GEN-LAST:event_ticketMouseClicked
 
     /**
      * @param args the command line arguments

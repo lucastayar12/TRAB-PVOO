@@ -12,12 +12,11 @@ public class Ticket {
     private Passageiro passageiro;
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
-    private static long serial;
 
     public Ticket() {
     dataCriacao = LocalDate.now();
     dataModificacao = LocalDate.now();
-    id = ++serial;
+   
     }
 
     public long getId() {
@@ -51,11 +50,6 @@ public class Ticket {
     public void setDataModificacao(LocalDate dataModificacao) {
         this.dataModificacao = dataModificacao;
     }
-
-    public static void setSerial(long serial) {
-        Ticket.serial = serial;
-    }
-
     
     public Passageiro getPassageiro() {
         return passageiro;

@@ -17,7 +17,7 @@ import java.util.List;
 public class DAOTicket {
 
     public int adiciona(Ticket tic) {
-        String sql = "insert into Ticket "
+        String sql = "insert into ticket "
                 + "(valor,voo,passageiro,dat_Criacao,dat_Mod)" + " values (?,?,?,?,?)";
 
         try (Connection connection = new ConnectionFactory().getConnection();
@@ -102,7 +102,7 @@ public class DAOTicket {
     }
         
        public void exclui(Ticket elemento) {
-        String sql = "delete from assento where id = ?";
+        String sql = "delete from ticket where id = ?";
         
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -119,7 +119,7 @@ public class DAOTicket {
     }
     
        public Long altera(Ticket elemento) {
-        String sql = " update valor =?, voo = ?, passageiro= ?, dat_Mod = ? where id = ?";
+        String sql = " update ticket set valor =?, voo = ?, passageiro= ?, dat_Mod = ? where id = ?";
         
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {

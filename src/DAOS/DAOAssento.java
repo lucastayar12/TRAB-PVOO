@@ -17,16 +17,15 @@ public class DAOAssento {
     
     public int adiciona(Assento ass) {
         String sql = "insert into assento "
-                + "(voo,cod_assento,passageiro,dat_Criacao,dat_Mod)" + " values (?,?,?,?,?)";
+                + "(voo,cod_assento,dat_Criacao,dat_Mod)" + " values (?,?,?,?)";
         
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
             stmt.setLong(1, ass.getVoo().getId());
             stmt.setString(2, ass.getCodAssento());
-            stmt.setLong(3, ass.getPassageiro().getId());
-            stmt.setDate(4, java.sql.Date.valueOf(ass.getDataCriacao()));
-            stmt.setDate(5, java.sql.Date.valueOf(ass.getDataModificacao()));
+            stmt.setDate(3, java.sql.Date.valueOf(ass.getDataCriacao()));
+            stmt.setDate(4, java.sql.Date.valueOf(ass.getDataModificacao()));
             
             stmt.execute();
             
@@ -116,16 +115,36 @@ public class DAOAssento {
     }
     
     public Long altera(Assento elemento) {
-        String sql = "update assento set voo = ?, cod_assento = ?, passageiro= ?, dat_Mod = ? where id = ?";
+        String sql = "update assento set voo = ?, cod_assento = ?, dat_Mod = ? where id = ?";
         
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt = connection.prepareStatement(sql)) {
             
             stmt.setLong(1, elemento.getVoo().getId());
             stmt.setString(2, elemento.getCodAssento());
-            stmt.setLong(3, elemento.getPassageiro().getId());
-            stmt.setDate(4, java.sql.Date.valueOf(elemento.getDataModificacao()));
-            stmt.setLong(5, elemento.getId());
+            stmt.setDate(3, java.sql.Date.valueOf(elemento.getDataModificacao()));
+            stmt.setLong(4, elemento.getId());
+            
+            stmt.execute();
+            
+            Long retorno = elemento.getId();
+            
+            System.out.println("Elemento alterado com sucesso.");
+            return retorno;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public Long alteraP(Assento elemento) {
+        String sql = "update assento set passageiro = ?, dat_Mod = ? where id = ?";
+        
+        try (Connection connection = new ConnectionFactory().getConnection();
+                PreparedStatement stmt = connection.prepareStatement(sql)) {
+            
+            stmt.setLong(1, elemento.getPassageiro().getId());
+            stmt.setDate(2, java.sql.Date.valueOf(elemento.getDataModificacao()));
+            stmt.setLong(3, elemento.getId());
             
             stmt.execute();
             

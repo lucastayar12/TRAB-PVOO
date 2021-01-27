@@ -27,21 +27,13 @@ public class TableModelCompanhia_A extends AbstractTableModel {
         return this.companhiaas.get(rowIndex);
     }
 
-    /**
-     * Adiciona uma cidade a tabela (cria uma linha)
-     *
-     * @param co
-     */
+    
     public void add(Companhia_A co) {
         this.companhiaas.add(co);
         fireTableDataChanged();
     }
 
-    /**
-     * Edita uma cidade a tabela (cria uma linha)
-     *
-     * @param co
-     */
+    
     public void edita(Companhia_A co) {
         int position = 0;
         for (int i = 0; i < companhiaas.size(); i++) {

@@ -84,15 +84,16 @@ public class TicketCRUD extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         cod = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        voo = new javax.swing.JFormattedTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         Combopassageiro = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        codVoo = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Ticket CRUD");
 
         jLabel4.setText("Passageiro:");
 
@@ -138,15 +139,6 @@ public class TicketCRUD extends javax.swing.JFrame {
         jLabel1.setText("Valor:");
 
         jLabel2.setText("Código:");
-
-        voo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-        voo.setFocusCycleRoot(true);
-        voo.setFocusLostBehavior(javax.swing.JFormattedTextField.COMMIT);
-        voo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vooActionPerformed(evt);
-            }
-        });
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -218,12 +210,12 @@ public class TicketCRUD extends javax.swing.JFrame {
                             .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(voo, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
+                            .addComponent(jLabel3)
+                            .addComponent(codVoo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
-                            .addComponent(Combopassageiro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(Combopassageiro, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jScrollPane2))
                 .addContainerGap(57, Short.MAX_VALUE))
         );
@@ -231,19 +223,23 @@ public class TicketCRUD extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(49, 49, 49)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(voo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(codVoo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Combopassageiro, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -263,7 +259,7 @@ public class TicketCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
         Ticket t = new Ticket();
 
-        Long idVoo = Long.parseLong(voo.getText());
+        Long idVoo = Long.parseLong(codVoo.getText());
         List<Voo> voos = daoVoo.lista();
         for (Voo vo : voos) {
             if (vo.getId() == idVoo) {
@@ -291,7 +287,7 @@ public class TicketCRUD extends javax.swing.JFrame {
         // TODO add your handling code here
 
         valor.setText("");
-        voo.setText("");
+        codVoo.setText("");
         cod.setText("");
 
     }//GEN-LAST:event_limpaMouseClicked
@@ -343,15 +339,14 @@ public class TicketCRUD extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_excluirMouseClicked
 
-    private void vooActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vooActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vooActionPerformed
-
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         // TODO add your handling code here:
         int linha = this.jTable2.getSelectedRow();
-        Voo pTemp = this.tableModelVoo.get(linha);
-        this.valor.setText(String.valueOf(pTemp.getId()));
+        Ticket pTemp = this.tableModelTicket.get(linha);
+        this.cod.setText(String.valueOf(pTemp.getId()));
+        this.valor.setText(String.valueOf(pTemp.getValor()));
+        this.Combopassageiro.setSelectedItem(pTemp.getPassageiro().getNome());
+        this.codVoo.setText(String.valueOf(pTemp.getVoo().getId()));
 
     }//GEN-LAST:event_jTable2MouseClicked
 
@@ -366,11 +361,9 @@ public class TicketCRUD extends javax.swing.JFrame {
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
         // TODO add your handling code here:
         int linha = this.jTable1.getSelectedRow();
-        Ticket pTemp = this.tableModelTicket.get(linha);
-        this.cod.setText(String.valueOf(pTemp.getId()));
-        this.voo.setText(String.valueOf(pTemp.getVoo().getId()));
-        this.valor.setText(String.valueOf(pTemp.getValor()));
-        this.Combopassageiro.setSelectedItem(pTemp.getPassageiro().getNome());
+        Voo pTemp = this.tableModelVoo.get(linha);
+        this.codVoo.setText(String.valueOf(pTemp.getId()));
+       
     }//GEN-LAST:event_jTable1MouseClicked
 
     /**
@@ -412,6 +405,7 @@ public class TicketCRUD extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> Combopassageiro;
     private javax.swing.JButton alterar;
     private javax.swing.JTextField cod;
+    private javax.swing.JTextField codVoo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -423,6 +417,5 @@ public class TicketCRUD extends javax.swing.JFrame {
     private javax.swing.JButton limpa;
     private javax.swing.JButton salvar;
     private javax.swing.JTextField valor;
-    private javax.swing.JFormattedTextField voo;
     // End of variables declaration//GEN-END:variables
 }

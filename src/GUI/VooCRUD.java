@@ -6,6 +6,7 @@
 package GUI;
 
 import DAOS.DAOAeroporto;
+import DAOS.DAOAssento;
 import DAOS.DAOCompanhia_A;
 import DAOS.DAOVoo;
 import JBIN.Aeroporto;
@@ -28,6 +29,7 @@ public class VooCRUD extends javax.swing.JFrame {
     DAOVoo daoVoo = new DAOVoo();
     DAOAeroporto daoAeroporto = new DAOAeroporto();
     DAOCompanhia_A daoCompanhiaA = new DAOCompanhia_A();
+    DAOAssento daoAssento = new DAOAssento();
 
     /**
      * Creates new form VooCRUD
@@ -341,14 +343,23 @@ public class VooCRUD extends javax.swing.JFrame {
         }
 
         voo.setCapacidade(Long.parseLong(cap.getText()));
+
         voo.setAviao(aviao.getText());
         voo.setEstado((String) comboEst.getSelectedItem());
+
         int id = daoVoo.adiciona(voo);
 
         List<Voo> voos = daoVoo.lista();
         for (Voo voof : voos) {
             if (id == voof.getId()) {
                 this.tableModelVoo.add(voof);
+                for (int i = 0; i < Long.parseLong(cap.getText()); i++) {
+
+                    Assento ass = new Assento();
+                    ass.setCodAssento("00" + (i + 1));
+                    ass.setVoo(voof);
+                    daoAssento.adiciona(ass);
+                }
             }
         }
 
@@ -364,8 +375,8 @@ public class VooCRUD extends javax.swing.JFrame {
         comboComp.setSelectedIndex(0);
         comboOrigem.setSelectedIndex(0);
         comboDestino.setSelectedIndex(0);
-        
-        
+
+
     }//GEN-LAST:event_limpaMouseClicked
 
     private void excluiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excluiMouseClicked
@@ -416,7 +427,7 @@ public class VooCRUD extends javax.swing.JFrame {
         // TODO add your handling code here:
         Voo voo = new Voo();
         voo.setId(Long.parseLong(cod.getText()));
-        
+
         String origem = (String) comboOrigem.getSelectedItem();
         String destino = (String) comboDestino.getSelectedItem();
         LocalDate dataF;
@@ -431,7 +442,7 @@ public class VooCRUD extends javax.swing.JFrame {
                 voo.setDestino(ar);
             }
         }
-        
+
         LocalDate dataf = LocalDate.now();
         DateTimeFormatter df = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         dataf = LocalDate.parse(data.getText(), df);
@@ -451,14 +462,14 @@ public class VooCRUD extends javax.swing.JFrame {
         voo.setAviao(aviao.getText());
         voo.setEstado((String) comboEst.getSelectedItem());
         Long id = daoVoo.altera(voo);
-        
+
         List<Voo> voos = daoVoo.lista();
         for (Voo voof : voos) {
             if (id == voof.getId()) {
                 this.tableModelVoo.edita(voof);
             }
         }
-        
+
     }//GEN-LAST:event_alteraMouseClicked
 
     /**

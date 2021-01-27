@@ -68,10 +68,10 @@ public class TableModelVoo extends AbstractTableModel {
                 return this.voos.get(rowIndex).getId();
 
             case 1:
-                return this.voos.get(rowIndex).getOrigem().getNome();
+                return this.voos.get(rowIndex).getOrigem().getCidade();
 
             case 2:
-                return this.voos.get(rowIndex).getDestino().getNome();
+                return this.voos.get(rowIndex).getDestino().getCidade();
 
             case 3:
                 return this.voos.get(rowIndex).getData();

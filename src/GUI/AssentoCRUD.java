@@ -56,11 +56,7 @@ public class AssentoCRUD extends javax.swing.JFrame {
 
         }
 
-        List<Passageiro> passageiros = daoPassageiro.lista();
-        for (Passageiro p : passageiros) {
-            this.Combopassageiro.addItem(p.getNome());
-        }
-
+        
     }
 
     /**
@@ -80,14 +76,12 @@ public class AssentoCRUD extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         codass = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         salvar = new javax.swing.JButton();
         limpa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        Combopassageiro = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Assento CRUD");
@@ -126,8 +120,6 @@ public class AssentoCRUD extends javax.swing.JFrame {
         });
 
         jLabel3.setText("Cod Assento:");
-
-        jLabel4.setText("Passageiro:");
 
         salvar.setText("Salvar");
         salvar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -187,7 +179,7 @@ public class AssentoCRUD extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 753, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel2)
@@ -199,11 +191,7 @@ public class AssentoCRUD extends javax.swing.JFrame {
                             .addGap(18, 18, 18)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(codass, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel3))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel4)
-                                .addComponent(Combopassageiro, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jLabel3)))
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(limpa, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -218,17 +206,12 @@ public class AssentoCRUD extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -237,8 +220,7 @@ public class AssentoCRUD extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(voo)
-                            .addComponent(codass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Combopassageiro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(codass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -270,14 +252,7 @@ public class AssentoCRUD extends javax.swing.JFrame {
             }
         }
         a.setCodAssento(codass.getText());
-        String np = (String) Combopassageiro.getSelectedItem();
-        List<Passageiro> passageiros = daoPassageiro.lista();
-        for (Passageiro p : passageiros) {
-            if (p.getNome().equals(np)) {
-                a.setPassageiro(p);
-            }
-        }
-
+        
         Long id = daoAssento.altera(a);
 
         List<Assento> assentos = daoAssento.lista();
@@ -320,13 +295,7 @@ public class AssentoCRUD extends javax.swing.JFrame {
             }
         }
         a.setCodAssento(codass.getText());
-        String np = (String) Combopassageiro.getSelectedItem();
-        List<Passageiro> passageiros = daoPassageiro.lista();
-        for (Passageiro p : passageiros) {
-            if (p.getNome().equals(np)) {
-                a.setPassageiro(p);
-            }
-        }
+        
         int id = daoAssento.adiciona(a);
         List<Assento> assentos = daoAssento.lista();
 
@@ -362,7 +331,6 @@ public class AssentoCRUD extends javax.swing.JFrame {
         Assento pTemp = this.tableModelAssento.get(linha);
         this.cod.setText(String.valueOf(pTemp.getId()));
         this.codass.setText(pTemp.getCodAssento());
-        this.Combopassageiro.setSelectedItem(pTemp.getPassageiro().getNome());
         this.voo.setText(String.valueOf(pTemp.getVoo().getId()));
         
     }//GEN-LAST:event_jTable1MouseClicked
@@ -403,14 +371,12 @@ public class AssentoCRUD extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Combopassageiro;
     private javax.swing.JButton alterar;
     private javax.swing.JTextField cod;
     private javax.swing.JFormattedTextField codass;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

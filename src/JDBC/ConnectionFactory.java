@@ -26,13 +26,13 @@ public class ConnectionFactory {
         try {
             Properties properties = new Properties();
             properties.setProperty("user", "root");
-            properties.setProperty("password", "12345");
+            properties.setProperty("password", "123456");
             properties.setProperty("useSSL", "false");
             properties.setProperty("useTimezone", "true");
             properties.setProperty("serverTimezone", "UTC");
             properties.setProperty("allowPublicKeyRetrieval","true");
             
-            String con = "jdbc:mysql://localhost/pvoo2";
+            String con = "jdbc:mysql://localhost/trabalhoii";
             return DriverManager.getConnection(con, properties);
 
         } catch (SQLException e) {

@@ -21,33 +21,39 @@ public class TestDijkstraAlgorithm1 {
     private List<Vertex> nodes;
     private List<Edge> edges;
     DAOTicket daoticket = new DAOTicket();
+    
+    public static void main(String[] args) {
+        new TestDijkstraAlgorithm1();
+    }
 
-    public void Executa(Voo voo) {
+    public List<String> Executa(Aeroporto origem, Aeroporto destino) {
 
         CidadesDistancia c1 = new CidadesDistancia("UBERABA", "SAO PAULO", 500);
-
+        List<String> cidades = new ArrayList();
         //...
         //...
-        Aeroporto origem = voo.getOrigem();
-        Aeroporto destino = voo.getDestino();
-
-        //int ido = origem.getId() - 1;
-        //int idd = destino.getId() - 1;
+        
+        int ido = Integer.valueOf(origem.getId().toString()) - 1;
+        int idd = Integer.valueOf(destino.getId().toString()) - 1;
+        
+        System.out.println(ido + " " + idd);
         int i = 1;
         Graph graph = this.createGraph();
         DijkstraAlgorithm dijkstra = new DijkstraAlgorithm(graph);
         //source
-        dijkstra.execute(nodes.get(i));
+        dijkstra.execute(nodes.get(ido));
         //destination
-        LinkedList<Vertex> path = dijkstra.getPath(nodes.get(i));
+        LinkedList<Vertex> path = dijkstra.getPath(nodes.get(idd));
 
         //Total distance
         int totalDistance = 0;
         path.size();
         for (Vertex vertex : path) {
-            System.out.println(vertex);
+            //System.out.println(vertex);
+            cidades.add(String.valueOf(vertex));
+            
         }
-
+        return cidades;
     }
 
     /*public double Executa2(int id, int id2, DAOVoo daovoo, Passageiro p, DAOAssento daoassento) {

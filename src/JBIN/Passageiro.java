@@ -12,9 +12,7 @@ public class Passageiro {
     private String documento;
     private LocalDate dataCriacao;
     private LocalDate dataModificacao;
-    private String senha;
    
-
     public Passageiro() {
         this.dataCriacao = LocalDate.now();
         dataModificacao = LocalDate.now();
@@ -30,14 +28,6 @@ public class Passageiro {
 
     public void setDataCriacao(LocalDate dataCriacao) {
         this.dataCriacao = dataCriacao;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
     }
 
     public String getNome() {

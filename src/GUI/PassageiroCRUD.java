@@ -75,14 +75,12 @@ public class PassageiroCRUD extends javax.swing.JFrame {
         dat_Nasc = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         salvar = new javax.swing.JButton();
         limpa = new javax.swing.JButton();
         alterar = new javax.swing.JButton();
         javax.swing.JButton excluir = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        senha = new javax.swing.JPasswordField();
         cpf = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -115,9 +113,6 @@ public class PassageiroCRUD extends javax.swing.JFrame {
 
         jLabel4.setLabelFor(cpf);
         jLabel4.setText("CPF:");
-
-        jLabel5.setLabelFor(senha);
-        jLabel5.setText("Senha:");
 
         salvar.setText("Salvar");
         salvar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -165,8 +160,6 @@ public class PassageiroCRUD extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
-        senha.setToolTipText("");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,30 +170,24 @@ public class PassageiroCRUD extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 686, Short.MAX_VALUE))
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(dat_Nasc, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(cod, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(nome, javax.swing.GroupLayout.DEFAULT_SIZE, 259, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(dat_Nasc, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(210, 210, 210))
-                                    .addComponent(cpf)))))
+                                .addComponent(jLabel4)
+                                .addGap(210, 210, 210))
+                            .addComponent(cpf)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(limpa, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -237,11 +224,7 @@ public class PassageiroCRUD extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(26, 26, 26)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(senha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(salvar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(excluir, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -266,7 +249,6 @@ public class PassageiroCRUD extends javax.swing.JFrame {
         p.setDocumento(cpf.getText());
         p.setNome(nome.getText());
         p.setNascimento(LocalDate.parse(dat_Nasc.getText(),df));
-        p.setSenha( new String(senha.getPassword()));
         int id = daoPassageiro.adiciona(p);
         List<Passageiro> passageiros = daoPassageiro.lista();
 
@@ -285,7 +267,6 @@ public class PassageiroCRUD extends javax.swing.JFrame {
         // TODO add your handling code here
 
         nome.setText("");
-        senha.setText("");
         cpf.setText("");
         cod.setText("");
         dat_Nasc.setText("");
@@ -301,8 +282,6 @@ public class PassageiroCRUD extends javax.swing.JFrame {
         this.nome.setText(pTemp.getNome());
         this.cpf.setText(pTemp.getDocumento());
         this.dat_Nasc.setText(String.valueOf(pTemp.getNascimento().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))));
-        String passText = new String(pTemp.getSenha());
-        this.senha.setText(passText);
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void excluirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_excluirMouseClicked
@@ -325,7 +304,6 @@ public class PassageiroCRUD extends javax.swing.JFrame {
         p.setDocumento(cpf.getText());
         p.setNome(nome.getText());
         p.setNascimento(LocalDate.parse(dat_Nasc.getText(), df));
-        p.setSenha(new String(senha.getPassword()));
         Long id = daoPassageiro.altera(p);
         
         List<Passageiro> passageiros = daoPassageiro.lista();
@@ -382,12 +360,10 @@ public class PassageiroCRUD extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
     private javax.swing.JButton limpa;
     private javax.swing.JTextField nome;
     private javax.swing.JButton salvar;
-    private javax.swing.JPasswordField senha;
     // End of variables declaration//GEN-END:variables
 }
